@@ -5,13 +5,16 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->user_id==true){
+			echo "anda sudah login";
+		}
 		$this->load->model('model_login');
 		$this->load->library('form_validation');
 	}
 
 	public function index(){
 		$this->load->view('login');
-		// echo md5(md5("admin"));
+		//echo md5(md5("operator"));
 	}
 
 	public function verifLogin(){
@@ -24,14 +27,21 @@ class Login extends CI_Controller {
 			redirect($this->input->server('HTTP_REFERER'));
 		}else{
 			$login = $this->model_login->getLogin();
-			if($login=="admin")
+			if($login==="admin")
 			{
-				echo var_dump($login);
-				// redirect('admin');
+				// echo var_dump($login);
+				redirect('admin');
+				// echo "ini admin";
 			}else{
-				echo var_dump($login);
+				// echo var_dump($login);
+				redirect('operator');
+				//echo "ini operator";
 			}
 		}
+	}
+	public function logoutSession(){
+		$this->model_login->destroySession();
+		redirect('login');
 	}
 	// public function __encrip_password($password)
 	// 	{

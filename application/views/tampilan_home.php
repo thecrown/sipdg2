@@ -32,7 +32,7 @@
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-      <?php $this->load->view('tampilan_menu'); ?>
+      <?php $this->load->view($sidabar); ?>
       <div class="content-wrapper">
         <?php  $this->load->view($main_view);?>
       </div>

@@ -18,7 +18,7 @@ class Model_login extends CI_model {
 				'nama_lengkap'=>$query->row(0)->nama_lengkap,
 				'role'=>$query->row(0)->role
 			);
-			$this->session->set_userdata($data);
+			$this->session->set_userdata($datas);
 			return $this->session->userdata('role');
 		}else{
 			return false;
@@ -31,16 +31,25 @@ class Model_login extends CI_model {
 				#return true;
 			#}	
 	}
+		public function destroySession(){
+        $this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('nama_lengkap');
+		$this->session->unset_userdata('role');
+		$this->session->sess_destroy();
 
-	function get_db_session_data()
-		{
-			$query = $this->db->select('user_data')->get('ci_sessions');
-			$user = array();
-			foreach ($query->result() as $row) {
-				$udata = unserialize($row->user_data);
-				$user['username'] = $udata['username'];
-				$user['is_admin'] = $udata['is_admin'];
-			}
-			return $user;
-		}
+        
+    }
+
+	// function get_db_session_data()
+	// 	{
+	// 		$query = $this->db->select('user_data')->get('ci_sessions');
+	// 		$user = array();
+	// 		foreach ($query->result() as $row) {
+	// 			$udata = unserialize($row->user_data);
+	// 			$user['username'] = $udata['username'];
+	// 			$user['is_admin'] = $udata['is_admin'];
+	// 		}
+	// 		return $user;
+	// 	}
 }
