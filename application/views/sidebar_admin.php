@@ -58,7 +58,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
          <ul class="treeview-menu">
-          <li  class="treeview"><a href=""><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
+          <li  class="treeview"><a href="<?= base_url('Barang-Masuk')?>"><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
         </ul> 
       </li>
       <li class="treeview">
@@ -67,7 +67,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="treeview"><a href=""><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
+          <li class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
         </ul>
 
       </li>
