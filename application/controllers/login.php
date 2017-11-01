@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		if($this->session->user_id==true){
-			echo "anda sudah login";
+			redirect('operator');
 		}
 		$this->load->model('model_login');
 		$this->load->library('form_validation');
@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 
 	public function index(){
 		$this->load->view('login');
-		//echo md5(md5("operator"));
+		
 	}
 
 	public function verifLogin(){
@@ -32,10 +32,14 @@ class Login extends CI_Controller {
 				// echo var_dump($login);
 				redirect('admin');
 				// echo "ini admin";
-			}else{
+			}else if($login==="operator"){
 				// echo var_dump($login);
 				redirect('operator');
 				//echo "ini operator";
+			}else{
+				$message['err_msg']='Username and Password May Wrong';
+				$this->session->set_flashdata($message);
+				redirect($this->input->server('HTTP_REFERER'));
 			}
 		}
 	}
