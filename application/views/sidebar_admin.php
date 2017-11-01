@@ -74,12 +74,12 @@
 
       <li class="header">HALAMAN ADMIN</li>
       <li class="treeview">
-        <a href="<?php echo site_url()?>">
+        <a href="<?php echo site_url('daftar-admin')?>">
           <i class="fa fa-users"></i> <span>Daftar Admin</span>
         </a>
       </li>
       <li class="treeview">
-        <a href="<?php echo site_url()?>">
+        <a href="<?php echo site_url('daftar-operator')?>">
           <i class="fa fa-users"></i> <span>Daftar Operator</span>
         </a>
       </li>

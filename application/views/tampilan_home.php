@@ -14,6 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/_all-skins.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets/iCheck/flat/blue.css'); ?>">
     <!-- Datepicker -->
@@ -107,6 +108,19 @@
       else return false;
     }
   </script>
+  <script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url('assets/bootstrap_3_3_6/js/bootstrap.min.js'); ?>"></script>
     <!-- Datepicker -->
