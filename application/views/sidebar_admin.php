@@ -46,39 +46,39 @@
     <!-- Sidebar menu: style canbe found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">HALAMAN UTAMA</li>
-      <li <?php if ($this->uri->segment(2) == 'dashboard') {echo 'class="active treeview"';}?>>
+      <li class="treeview">
         <a href="<?php echo site_url('dashboard')?>">
           <i class="fa fa-dashboard"></i><span>Dashboard</span>
         </a>
       </li>
       
-      <li <?php if ($this->uri->segment(2) == '') {echo 'class="active treeview"';}?>>
+      <li class="treeview">
         <a href="<?php echo site_url('')?>">
           <i class="fa fa-list-alt"></i><span>Catat Barang Masuk</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
          <ul class="treeview-menu">
-          <li <?php if ($this->uri->segment(3) == 'proposal'){echo 'class="active treeview"';}?>><a href="<?php echo site_url()?>"><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
+          <li  class="treeview"><a href=""><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
         </ul> 
       </li>
-      <li <?php if ($this->uri->segment(2) == ''){echo 'class="active treeview"';}?>>
+      <li class="treeview">
         <a>
           <i class="fa fa-list-alt"></i> <span>Catat Barang Keluar</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li <?php if ($this->uri->segment(3) == 'proposal'){echo 'class="active treeview"';}?>><a href="<?php echo site_url()?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
+          <li class="treeview"><a href=""><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
         </ul>
 
       </li>
 
       <li class="header">HALAMAN ADMIN</li>
-      <li <?php if ($this->uri->segment(2) == ''){echo 'class="active treeview"';}?>>
+      <li class="treeview">
         <a href="<?php echo site_url()?>">
           <i class="fa fa-users"></i> <span>Daftar Admin</span>
         </a>
       </li>
-      <li <?php if ($this->uri->segment(2) == ''){echo 'class="active treeview"';}?>>
+      <li class="treeview">
         <a href="<?php echo site_url()?>">
           <i class="fa fa-users"></i> <span>Daftar Operator</span>
         </a>
