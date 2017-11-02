@@ -10,5 +10,5 @@ $route['Barang-Keluar']='admin/BarangKeluar';
 $route['Barang-Masuk']='admin/BarangMasuk';
 $route['daftar-admin']='admin/ViewAdmin';
 $route['daftar-operator']='admin/ViewOperator';
-
+$route['Dashboard']='admin';
 $route['404_override'] = '';

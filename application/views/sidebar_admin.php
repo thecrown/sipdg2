@@ -47,29 +47,30 @@
     <ul class="sidebar-menu">
       <li class="header">HALAMAN UTAMA</li>
       <li class="treeview">
-        <a href="<?php echo site_url('dashboard')?>">
+        <a href="<?php echo site_url('Dashboard')?>">
           <i class="fa fa-dashboard"></i><span>Dashboard</span>
         </a>
       </li>
       
       <li class="treeview">
         <a href="<?php echo site_url('')?>">
-          <i class="fa fa-list-alt"></i><span>Catat Barang Masuk</span>
+          <i class="fa fa-list-alt"></i><span>Barang Masuk</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
          <ul class="treeview-menu">
+          <li  class="treeview"><a href="<?= base_url('Barang-Masuk')?>"><i class="fa fa-circle-o"></i>Catatan Barang Masuk</a></li>
           <li  class="treeview"><a href="<?= base_url('Barang-Masuk')?>"><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
-        </ul> 
+        </ul>
       </li>
       <li class="treeview">
         <a>
-          <i class="fa fa-list-alt"></i> <span>Catat Barang Keluar</span>
+          <i class="fa fa-list-alt"></i> <span>Barang Keluar</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
+          <li class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Catatan Barang Keluar</a></li>
+          <li  class="treeview"><a href="<?= base_url('Barang-Masuk')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
         </ul>
-
       </li>
 
       <li class="header">HALAMAN ADMIN</li>
