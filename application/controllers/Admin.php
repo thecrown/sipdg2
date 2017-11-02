@@ -37,6 +37,16 @@ class Admin extends CI_Controller {
 		$data['main_view']='/operator/view_operator';	
 		$this->load->view('tampilan_home',$data);
 	}
+	public function CatatanBarangKeluar(){
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/barang/catatan_barang_keluar';	
+		$this->load->view('tampilan_home',$data);
+	}
+	public function CatatanBarangMasuk(){
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/barang/catatan_barang_masuk';	
+		$this->load->view('tampilan_home',$data);	
+	}
 
 }
 
