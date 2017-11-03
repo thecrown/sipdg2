@@ -27,16 +27,7 @@ class Admin extends CI_Controller {
 		$data['main_view']='/barang/barang_masuk';	
 		$this->load->view('tampilan_home',$data);
 	}
-	public function ViewAdmin(){
-		$data['sidabar']='sidebar_admin';
-		$data['main_view']='/admin/view_admin';	
-		$this->load->view('tampilan_home',$data);
-	}
-	public function ViewOperator(){
-		$data['sidabar']='sidebar_admin';
-		$data['main_view']='/operator/view_operator';	
-		$this->load->view('tampilan_home',$data);
-	}
+	
 	public function CatatanBarangKeluar(){
 		$data['sidabar']='sidebar_admin';
 		$data['main_view']='/barang/catatan_barang_keluar';	
@@ -46,6 +37,42 @@ class Admin extends CI_Controller {
 		$data['sidabar']='sidebar_admin';
 		$data['main_view']='/barang/catatan_barang_masuk';	
 		$this->load->view('tampilan_home',$data);	
+	}
+	public function ViewAdmin(){
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/admin/view_admin';
+		$data['data']=$this->Model_admin->GetAdmin_View();	
+		$this->load->view('tampilan_home',$data);
+	}
+	public function ViewOperator(){
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/operator/view_operator';	
+		$this->load->view('tampilan_home',$data);
+	}
+	public function HapusAdmin($id){
+		$hapus = $this->Model_admin->HapusAdmin($id);
+		if($hapus==true){
+			// $msg['succ_msg']="Admin Telah Terhapus";
+			// $msg['scss_msg'] = "Success Delete Proker";
+  			// $err_msg['msg'] = "Sorry your Data Failed t Update,..";
+     //        $this->session->set_flashdata($err_msg);
+     //        redirect($this->input->server('HTTP_REFERER',$err_msg)); 
+			// die(var_dump($msg));
+
+			$msg['msg'] = "Data Admin berhasil dihapus";
+            $this->session->set_flashdata($msg);
+            redirect($this->input->server('HTTP_REFERER')); 
+            
+		}else{
+			$msg['msg2'] = "Data Gagal berhasil dihapus";
+            $this->session->set_flashdata($msg);
+            redirect($this->input->server('HTTP_REFERER'));
+			
+			// redirect($this->input->server('HTTP_REFERER')); 
+		}
+	}
+	public function EditAdmin($id){
+
 	}
 
 }

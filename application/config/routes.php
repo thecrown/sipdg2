@@ -13,4 +13,6 @@ $route['daftar-operator']='admin/ViewOperator';
 $route['Dashboard']='admin';
 $route['Catatan-Keluar']='admin/CatatanBarangKeluar';
 $route['Catatan-Masuk']='admin/CatatanBarangMasuk';
+$route['HapusAdmin/(:num)']='admin/HapusAdmin/$1';
+$route['EditAdmin/(:num)']='admin/EditAdmin/$1';
 $route['404_override'] = '';

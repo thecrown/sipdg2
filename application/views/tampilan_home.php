@@ -120,7 +120,63 @@
       'autoWidth'   : false
     })
   })
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
 </script>
+<?php 
+  if (!empty($this->session->flashdata('msg'))) {
+    
+    echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Notifikasi</h4>
+        </div>
+        <div class="modal-body">
+          <p>'.$this->session->flashdata('msg').'</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>';
+  } elseif (!empty($this->session->flashdata('msg2'))) {
+     
+    echo '<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Notifikasi</h4>
+        </div>
+        <div class="modal-body">
+          <p>'.$this->session->flashdata('msg2').'</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>';
+  } ?>
+
+  <?php if (!empty($this->session->flashdata('msg') || $this->session->flashdata('msg2'))) {?>
+  <script type="text/javascript">
+   $(window).on('load',function(){
+          $('#myModal').modal('show');
+      });
+  </script>
+  <?php }?>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url('assets/bootstrap_3_3_6/js/bootstrap.min.js'); ?>"></script>
     <!-- Datepicker -->
