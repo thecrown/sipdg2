@@ -15,4 +15,9 @@ $route['Catatan-Keluar']='admin/CatatanBarangKeluar';
 $route['Catatan-Masuk']='admin/CatatanBarangMasuk';
 $route['HapusAdmin/(:num)']='admin/HapusAdmin/$1';
 $route['EditAdmin/(:num)']='admin/EditAdmin/$1';
+$route['UpdateAdmin']='Validasi/UpdateAdmin';
+$route['HapusOperator/(:num)']='admin/HapusOperator/$1';
+$route['UpdateOperator']='Validasi/UpdateOperator';
+
+
 $route['404_override'] = '';
