@@ -24,7 +24,9 @@ class Admin extends CI_Controller {
 
 	public function BarangMasuk(){
 		$data['sidabar']='sidebar_admin';
-		$data['main_view']='/barang/barang_masuk';	
+		$data['main_view']='/barang/barang_masuk';
+		$data['kode']=$this->Model_admin->GetKode_View();
+		$data['jenis']=$this->Model_admin->GetJenis_View();
 		$this->load->view('tampilan_home',$data);
 	}
 	
@@ -35,7 +37,8 @@ class Admin extends CI_Controller {
 	}
 	public function CatatanBarangMasuk(){
 		$data['sidabar']='sidebar_admin';
-		$data['main_view']='/barang/catatan_barang_masuk';	
+		$data['main_view']='/barang/catatan_barang_masuk';
+		$data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
 		$this->load->view('tampilan_home',$data);	
 	}
 	##########################################################ADMIN###########################################################

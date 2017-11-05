@@ -13,79 +13,70 @@
             <div class="box-header with-border">
               <h3 class="box-title">Input Data Barang</h3>
             </div>
-            <form class="form-horizontal">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Id Masuk</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="Id Masuk">
-                  </div>
-                </div>
+            <form class="form-horizontal" action="<?=base_url('TambahBarangMasuk') ?>" method="post">
+              <div class="box-body">
+
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tanggal</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Tanggal">
+                    <div class="input-group date"><div class="input-group-addon">
+                    <i class="fa fa-calendar"></i></div><input type="date" class="form-control" name="tanggal" placeholder="Tanggal"></div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Kode Satuan</label>
-                  <div class="col-sm-10">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Nama Barang</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Nama Barang">
+                    <input type="text" class="form-control" id="inputPassword3"  name="barang"  placeholder="Nama Barang">
                   </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Kode Satuan</label>
+                  <div class="col-sm-10">
+                  <select class="form-control select2" name="kode">
+                    <?php if(isset($kode)){
+                      foreach ($kode as $row) {?>
+                    <option value="<?= $row->id_satuan?>"><?=$row->kode ?>&nbsp;-&nbsp;<?=$row->keterangan ?></option>
+                    <?php } } ?>
+                  </select>
+                </div>
+                </div>
+              
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis Barang</label>
+                  <div class="col-sm-10">
+                  <select class="form-control" name="jenis">
+                    <?php if(isset($jenis)){
+                      foreach ($jenis as $row) {?>
+                    <option value="<?= $row->id_jenis?>"><?=$row->jenis_barang ?></option>
+                    <?php } } ?>
+                  </select>
+                </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Jumlah</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Jumlah">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis Barang</label>
-                  <div class="col-sm-10">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
+                    <input type="text" class="form-control" id="input1" name="stock" placeholder="Jumlah"></div>
+                  
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Harga</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Harga">
+                    <div class="input-group date"><div class="input-group-addon">
+                    <i class="fa">Rp</i></div><input type="text" class="form-control" id="input2" name="harga" placeholder="Harga Satuan"></div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Total Harga</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Total Harga">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Penerima</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Penerima">
+                    <div class="input-group date"><div class="input-group-addon">
+                    <i class="fa">Rp</i></div><input type="text" class="form-control" id="output" name="total" placeholder="Total Harga"></div>
                   </div>
                 </div>
               </div>
@@ -96,7 +87,7 @@
                 <button type="submit" class="btn btn-info btn-md">Simpan</button>
                   </div>
                   <div class="col-xs-4 text-center ">
-                <button type="submit" class="btn btn-info btn-md">Batal</button>
+                <button type="reset" class="btn btn-info btn-md">Batal</button>
                   </div>
                   <div class="col-xs-4 ">
                 <button type="submit" class="btn btn-info pull-right btn-md">Tambah</button>

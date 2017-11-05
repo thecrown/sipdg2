@@ -6,27 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Aplikasi Pertanggungjawaban Barang Gudang</title>
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap_3_3_6/css/bootstrap.min.css'); ?>">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/font-awesome/css/font-awesome.min.css'); ?>">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/ionicons/css/ionicons.min.css'); ?>">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/_all-skins.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/iCheck/flat/blue.css'); ?>">
-    <!-- Datepicker -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/datepicker/datepicker3.css'); ?>">
-    <!-- Timepicker -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/timepicker/bootstrap-timepicker.min.css'); ?>">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css'); ?>">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css');?>">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/font-awesome/css/font-awesome.min.css');?>">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/Ionicons/css/ionicons.min.css');?>">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css');?>">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css');?>">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/iCheck/all.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css');?>">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/timepicker/bootstrap-timepicker.min.css');?>">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/select2/dist/css/select2.min.css');?>">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css');?>">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/_all-skins.min.css');?>">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/_all-skins.min.css'); ?>">
     <script src="<?php echo base_url('asset/html5shiv/dist/html5shiv.min.js'); ?>"></script>
     <script src="<?php echo base_url('asset/respond/dest/respond.min.js'); ?>"></script>
     <![endif]-->
@@ -175,8 +180,21 @@
    $(window).on('load',function(){
           $('#myModal').modal('show');
       });
+
   </script>
   <?php }?>
+  <script>
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+    $("#input2,#input1").keyup(function () {
+    $('#output').val($('#input1').val() * $('#input2').val());
+    });
+
+  </script>
+  <script type="text/javascript">
+    
+  </script>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url('assets/bootstrap_3_3_6/js/bootstrap.min.js'); ?>"></script>
     <!-- Datepicker -->
@@ -184,13 +202,24 @@
     <!-- Timepicker -->
     <script src="<?php echo base_url('assets/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
     <!-- DataTables -->
+    <script src="<?php echo base_url('assets/bower_components/select2/dist/js/select2.full.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.min.js'); ?>"></script>
     <!-- Slimscroll -->
+    <script src="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?>"></script>
     <script src="<?php echo base_url('assets/slimScroll/jquery.slimscroll.min.js'); ?>"></script>
     <!-- Fast Click -->
     <script src="<?php echo base_url('assets/fastclick/fastclick.js'); ?>"></script>
     <!-- App -->
+    <script src="<?php echo base_url('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/app.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/fastclick/lib/fastclick.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/dist/js/adminlte.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
   </body>
 </html>

@@ -18,6 +18,9 @@ $route['EditAdmin/(:num)']='admin/EditAdmin/$1';
 $route['UpdateAdmin']='Validasi/UpdateAdmin';
 $route['HapusOperator/(:num)']='admin/HapusOperator/$1';
 $route['UpdateOperator']='Validasi/UpdateOperator';
+$route['AddOperator']='Validasi/AddOperator';
+$route['AddAdmin']='Validasi/AddAdmin';
+$route['TambahBarangMasuk']='Validasi/TambahBarangMasuk';
 
 
 $route['404_override'] = '';

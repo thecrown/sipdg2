@@ -19,7 +19,7 @@
 				<div class="icon">
 					<i class="fa fa-files-o"></i>
 				</div>
-				<a href="<?php echo site_url()?>" class="small-box-footer">
+				<a href="<?php echo site_url('Catatan-Masuk')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -33,7 +33,7 @@
 				<div class="icon">
 					<i class="fa fa-files-o"></i>
 				</div>
-				<a href="<?php echo site_url()?>" class="small-box-footer">
+				<a href="<?php echo site_url('Catatan-Keluar')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>

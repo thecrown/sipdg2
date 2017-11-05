@@ -15,7 +15,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <span data-toggle="tooltip" title="Tambah Admin"><a role="button" href="#addadmin" class="btn btn-success" data-toggle="modal"><i class="fa fa-pencil-square-o bigicon" >&nbsp;&nbsp;Tambah Admin</i></a></span>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -26,6 +26,7 @@
                   <th>Id Admin</th>
                   <th>Username</th>
                   <th>Nama Lengkap</th>
+                  <th>No Telephone</th>
                   <th>Options</th>
                 </tr>
                 </thead>
@@ -37,6 +38,7 @@
                   <td><?= $key->id_admin ?></td>
                   <td><?= $key->username ?></td>
                   <td><?= $key->nama_lengkap ?></td>
+                  <td><?= $key->no_telephone ?></td>
                   <td>
                     <span data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_admin;?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
@@ -69,7 +71,12 @@
                               <input type="text" class="form-control" name="nama_lengkap" value="<?= $key->nama_lengkap ?>">
                             </div>
                           </div>
-
+                          <div class="form-group">
+                            <label class="control-label" for="subject">No Telephone<span class="text-danger">*</span></label>
+                            <div class="">
+                              <input type="text" class="form-control" name="no_telephone" value="<?= $key->no_telephone ?>">
+                            </div>
+                          </div>
                           <div class="form-group">
                             <label class="control-label" for="subject">Password<span class="text-danger">*</span></label>
                             <div class="">
@@ -97,6 +104,66 @@
                     
                   </div>
                 </div>
+
+              <!-- Modal -->
+                <div class="modal fade" id="addadmin" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Data Admin</h4>
+                      </div>
+                      <div class="modal-body col-xs-12">
+                        <form class="form-horizontal" method="post" action="<?=base_url('AddAdmin');?>">
+                          <input type="hidden" name="id" value="">
+                          <div class="form-group">
+                            <label class="control-label">Username <span class="text-danger">*</span></label>
+                            <div class=""> 
+                              <input type="text" class="form-control" name="username" value="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label" for="subject">Nama Lengkap <span class="text-danger">*</span></label>
+                            <div class="">
+                              <input type="text" class="form-control" name="nama_lengkap" value="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label" for="subject">No Telephone <span class="text-danger">*</span></label>
+                            <div class="">
+                              <input type="text" class="form-control" name="no_telephone" value="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label" for="subject">Password<span class="text-danger">*</span></label>
+                            <div class="">
+                              <input type="password" class="form-control" name="Password" value="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label" for="subject">Re-Type Password<span class="text-danger">*</span></label>
+                            <div class="">
+                              <input type="password" class="form-control" name="matchPassword" value="">
+                            </div>
+                          </div>
+
+                          <div class="form-group"> 
+                            <div class="pull-right">
+                              <button type="submit" name="fileSubmit" class="btn btn-primary">Simpan Perubahan</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
 
                 <!-- Modal Delete -->
                 <div class="modal fade" id="delete<?=$key->id_admin;?>" role="dialog">
@@ -133,6 +200,7 @@
                   <th>Id Admin</th>
                   <th>Username</th>
                   <th>Nama Lengkap</th>
+                  <th>No Telephone</th>
                   <th>Options</th>
                 </tr>
                 </tfoot>
