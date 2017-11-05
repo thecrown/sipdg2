@@ -84,6 +84,42 @@ class Model_barang extends CI_Model {
 			return false;
 		}
 	}
+	public function UpdateCatatBarangMasuk($id){
+		$where = array(
+			'id_masuk'=>$id
+		);
+		$getdata = $this->db->get_where('barang_masuk',$where)->row();
+		
+		$getBarangLama = array(
+			'kode_satuan'=>$getdata->kode_satuan,
+			'jenis_barang'=>$getdata->jenis_barang,
+			'nama_barang'=>$getdata->nama_barang
+		);
+		$getdatalama = $this->db->get_where('barang',$getBarangLama)->row();
+
+		$StockAwal = $getdatalama->stock-$getdata->jumlah;
+			
+			$data = array(
+				'stock'=>$StockAwal + $this->input->post('jumlah')
+			);
+
+		$updateBarang = $this->db->update('barang', $data, $getBarangLama);
+			$dataUpdate = array(
+				'tanggal'=>$this->input->post('tanggal'),
+				'nama_barang'=>$this->input->post('nama'),
+				'kode_satuan'=>$this->input->post('kode'),
+				'jenis_barang'=>$this->input->post('jenis'),
+				'jumlah'=>$this->input->post('jumlah'),
+				'harga'=>$this->input->post('harga')
+			);
+
+		$updatePencatatanBarang = $this->db->update('barang_masuk', $dataUpdate, $where);
+		if($updateBarang && $updatePencatatanBarang){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 }
 

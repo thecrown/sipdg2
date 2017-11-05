@@ -136,7 +136,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function UpdateCatatBarangMasuk($id)
 	{
-		
+			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('kode', 'Kode Satuan', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('jenis', 'Jenis Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('total', 'Total Harga', 'trim|required|xss_clean');
+
+			if($this->form_validation->run()==false){
+				$msg['msg'] = validation_errors();
+	            $this->session->set_flashdata($msg);
+	            redirect($this->input->server('HTTP_REFERER')); 
+			}else{
+
+				$return  = $this->Model_barang->UpdateCatatBarangMasuk($id);
+				if($return == true){
+					$msg['msg'] = "Data pencatatan Barang berhasil di Update";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER')); 
+				}else{
+					$msg['msg2'] = "Data pencatatan Barang Gagal di Update";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER'));
+				}
+		}
 	}
 }
  ?>
