@@ -162,5 +162,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 		}
 	}
+	public function TambahBarangKeluar()
+	{
+			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean');
+				
+			if($this->form_validation->run()==false){
+				$msg['msg'] = validation_errors();
+	            $this->session->set_flashdata($msg);
+	            redirect($this->input->server('HTTP_REFERER')); 
+			}else{
+				$id = $this->input->post('nama_barang');
+				$return  = $this->Model_barang->TambahBarangKeluar($id);
+				if($return == true){
+					$msg['msg'] = "Data pencatatan Barang keluar berhasil";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER')); 
+				}else{
+					$msg['msg2'] = "Barang yang Anda Minta Jumlahnya lebih sedikit dari permintaan";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER'));
+				}
+		}
+	}
+	public function UpdateCatatBarangKeluar($id){
+			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean');
+			
+			if($this->form_validation->run()==false){
+				$msg['msg'] = validation_errors();
+	            $this->session->set_flashdata($msg);
+	            redirect($this->input->server('HTTP_REFERER')); 
+			}else{
+
+				$return  = $this->Model_barang->UpdateCatatBarangKeluar($id);
+				if($return == true){
+					$msg['msg'] = "Data pencatatan Barang berhasil di Update";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER')); 
+				}else{
+					$msg['msg2'] = "Data pencatatan Barang Gagal di Update";
+		            $this->session->set_flashdata($msg);
+		            redirect($this->input->server('HTTP_REFERER'));
+				}
+		}
+	}
 }
- ?>

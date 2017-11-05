@@ -11,81 +11,42 @@
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Input Data Barang</h3>
+              <h3 class="box-title">Input Data Barang Keluar</h3>
             </div>
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="<?=base_url('TambahBarangKeluar') ?>" method="post">
               <div class="box-body">
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Id Keluar</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="Id Keluar">
-                  </div>
-                </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tanggal</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Tanggal">
+                    <div class="input-group date"><div class="input-group-addon">
+                    <i class="fa fa-calendar"></i></div><input type="date" name="tanggal" class="form-control" id="inputPassword3" placeholder="Tanggal"></div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Kode Satuan</label>
-                  <div class="col-sm-10">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Nama Barang</label>
-
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Nama Barang">
-                  </div>
+                  <select class="form-control" name="nama_barang">
+                    <option>Pilih Salah Satu Barang</option>
+                    <?php if(isset($barang)){
+                      foreach ($barang as $row) {?>
+                    <option value="<?= $row->id_barang?>" ><?=$row->nama_barang ?></option>
+                    <?php } } ?>
+                  </select>
+                </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Jumlah</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Jumlah">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis Barang</label>
-                  <div class="col-sm-10">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Harga</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Harga">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Total Harga</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Total Harga">
+                    <input type="text" class="form-control" name="jumlah" id="inputPassword3" placeholder="Jumlah">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Penerima</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Penerima">
+                    <input type="text" class="form-control" name="penerima" id="inputPassword3" placeholder="Penerima">
                   </div>
                 </div>
               </div>

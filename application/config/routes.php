@@ -23,5 +23,7 @@ $route['AddAdmin']='Validasi/AddAdmin';
 $route['TambahBarangMasuk']='Validasi/TambahBarangMasuk';
 $route['HapusPencatatanBarang/(:num)']='Admin/HapusPencatatanBarang/$1';
 $route['UpdateCatatBarangMasuk/(:num)']='Validasi/UpdateCatatBarangMasuk/$1';
-
+$route['TambahBarangKeluar']='Validasi/TambahBarangKeluar';
+$route['HapusPencatatanBarangKeluar/(:num)']='Admin/HapusPencatatanBarangKeluar/$1';
+$route['UpdateCatatBarangKeluar/(:num)']='Validasi/UpdateCatatBarangKeluar/$1';
 $route['404_override'] = '';

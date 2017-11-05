@@ -106,7 +106,7 @@ class Model_barang extends CI_Model {
 		$updateBarang = $this->db->update('barang', $data, $getBarangLama);
 			$dataUpdate = array(
 				'tanggal'=>$this->input->post('tanggal'),
-				'nama_barang'=>$this->input->post('nama'),
+				'nama_barang'=>strtolower($this->input->post('nama')),
 				'kode_satuan'=>$this->input->post('kode'),
 				'jenis_barang'=>$this->input->post('jenis'),
 				'jumlah'=>$this->input->post('jumlah'),
@@ -114,6 +114,94 @@ class Model_barang extends CI_Model {
 			);
 
 		$updatePencatatanBarang = $this->db->update('barang_masuk', $dataUpdate, $where);
+		if($updateBarang && $updatePencatatanBarang){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function TambahBarangKeluar($id){
+		$where = array(
+			'id_barang'=>$id
+		);
+		$getdata = $this->db->get_where('barang',$where)->row();
+		if($getdata->stock<$this->input->post('jumlah')){
+			return false;
+		}else{
+			$dataStockB = $getdata->stock-$this->input->post('jumlah');
+				$databaru = array(
+					'stock'=>$dataStockB
+				);
+			$updateStock = $this->db->update('barang', $databaru, $where);
+				$dataKeluar = array(
+					'tanggal' => $this->input->post('tanggal'),
+					'kode_barang'=> $id,
+					'jumlah' => $this->input->post('jumlah'),
+					'harga' => $getdata->harga_barang,
+					'penerima' => $this->input->post('penerima') 
+				);
+			$insertDataKeluar = $this->db->insert('barang_keluar', $dataKeluar);
+			if($updateStock && $insertDataKeluar){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+	}
+	public function HapusPencatatanBarangKeluar($id)
+	{
+		$where = array(
+			'id_keluar'=>$id
+		);
+		$row = $this->db->get_where('barang_keluar', $where)->row();
+		$dicari = array(
+			'id_barang'=>$row->kode_barang
+		);
+		$ditambah = $this->db->get_where('barang', $dicari)->row();
+		
+		$stockB = $ditambah->stock+$row->jumlah;
+		// die(var_dump($stockB));
+			$dataB = array(
+				'stock'=>$stockB
+			);
+		$inputB =  $this->db->update('barang', $dataB, $dicari);
+		$deleteBM = $this->db->delete('barang_keluar',$where);
+		if($inputB && $deleteBM){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function UpdateCatatBarangKeluar($id)
+	{
+		$where = array(
+			'id_keluar'=>$id
+		);
+		$getdata = $this->db->get_where('barang_keluar',$where)->row();
+		
+		$getBarangLama = array(
+			'id_barang'=>$getdata->kode_barang
+		);
+
+		$getdatalama = $this->db->get_where('barang',$getBarangLama)->row();
+
+		$StockAwal = $getdatalama->stock+$getdata->jumlah;
+			
+			$data = array(
+				'stock'=>$StockAwal - $this->input->post('jumlah')
+			);
+
+		$updateBarang = $this->db->update('barang', $data, $getBarangLama);
+			$dataUpdate = array(
+				'tanggal'=>$this->input->post('tanggal'),
+				'kode_barang'=> $this->input->post('nama'),
+				'jumlah'=>$this->input->post('jumlah'),
+				'harga' => $getdatalama->harga_barang,
+				'penerima'=>$this->input->post('penerima')
+			);
+
+		$updatePencatatanBarang = $this->db->update('barang_keluar', $dataUpdate, $where);
 		if($updateBarang && $updatePencatatanBarang){
 			return true;
 		}else{

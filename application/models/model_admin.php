@@ -9,6 +9,7 @@
 			);
 			return $this->db->get_where('admin', $where)->result();
 		}
+		
 		public function HapusAdmin($id){
 			$where = array(
 				'id_admin'=>$id
@@ -88,11 +89,23 @@
 		public function GetJenis_View(){
 			return $this->db->get('jenis_barang')->result();
 		}
+		public function GetBarang_View()
+		{
+			return $this->db->get('barang')->result();
+		}
 		public function GetDataBarangMasuk_view(){
 			 		$this->db->select('*');
 			 		$this->db->from('barang_masuk a');
 			 		$this->db->join('jenis_barang b', 'b.id_jenis=a.jenis_barang', 'left');
     				$this->db->join('satuan c', 'c.id_satuan=a.kode_satuan', 'left'); 
+			return $this->db->get()->result();
+		}
+		public function GetDataBarangKeluar_view(){
+					$this->db->select('*');
+			 		$this->db->from('barang a');
+    				$this->db->join('satuan b', 'b.id_satuan=a.kode_satuan', 'inner'); 
+    				$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
+    				$this->db->join('barang_keluar d', 'd.kode_barang=a.id_barang', 'inner'); 
 			return $this->db->get()->result();
 		}	
 	}
