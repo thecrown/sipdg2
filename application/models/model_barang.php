@@ -58,6 +58,32 @@ class Model_barang extends CI_Model {
 				return false;
 			}
 	}
+	public function HapusPencatatanBarang($id)
+	{
+		$where = array(
+			'id_masuk'=>$id
+		);
+		$row = $this->db->get_where('barang_masuk', $where)->row();
+		$dicari = array(
+			'kode_satuan'=>$row->kode_satuan,
+			'nama_barang'=>$row->nama_barang,
+			'jenis_barang'=>$row->jenis_barang
+		);
+		$dikurangi = $this->db->get_where('barang', $dicari)->row();
+		
+		$stockB = $dikurangi->stock-$row->jumlah;
+		// die(var_dump($stockB));
+			$dataB = array(
+				'stock'=>$stockB
+			);
+		$inputB =  $this->db->update('barang', $dataB, $dicari);
+		$deleteBM = $this->db->delete('barang_masuk',$where);
+		if($inputB && $deleteBM){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 }
 

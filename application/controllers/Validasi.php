@@ -134,5 +134,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 		}
 	}
+	public function UpdateCatatBarangMasuk($id)
+	{
+		
+	}
 }
  ?>

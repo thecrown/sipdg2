@@ -38,6 +38,8 @@ class Admin extends CI_Controller {
 	public function CatatanBarangMasuk(){
 		$data['sidabar']='sidebar_admin';
 		$data['main_view']='/barang/catatan_barang_masuk';
+		$data['kode']=$this->Model_admin->GetKode_View();
+		$data['jenis']=$this->Model_admin->GetJenis_View();
 		$data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
 		$this->load->view('tampilan_home',$data);	
 	}
@@ -82,7 +84,20 @@ class Admin extends CI_Controller {
 		}
 	}
 	########################################################End Operator###########################################################
-
+	#######################################################Barang ############################################################
+	public function HapusPencatatanBarang($id)
+	{
+		$hapus = $this->Model_barang->HapusPencatatanBarang($id);
+		if($hapus==true){
+			$msg['msg'] = "Data Pencatatan Barang berhasil dihapus";
+            $this->session->set_flashdata($msg);
+            redirect($this->input->server('HTTP_REFERER')); 
+		}else{
+			$msg['msg2'] = "Data Pencatatan Barang Gagal dihapus";
+            $this->session->set_flashdata($msg);
+            redirect($this->input->server('HTTP_REFERER'));
+		}
+	}
 }
 
 /* End of file Admin.php */

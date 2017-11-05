@@ -21,6 +21,6 @@ $route['UpdateOperator']='Validasi/UpdateOperator';
 $route['AddOperator']='Validasi/AddOperator';
 $route['AddAdmin']='Validasi/AddAdmin';
 $route['TambahBarangMasuk']='Validasi/TambahBarangMasuk';
-
+$route['HapusPencatatanBarang/(:num)']='Admin/HapusPencatatanBarang/$1';
 
 $route['404_override'] = '';
