@@ -29,7 +29,7 @@ class Model_barang extends CI_Model {
 					'stock'=>$this->input->post('stock'),
 					'harga_barang'=>$this->input->post('harga')
 				);
-				$adding=$this->db->insert('barang', $databarang);
+				$adding = $this->db->insert('barang', $databarang);
 			}else{
 				$whereBB = array(
 				'kode_satuan'=>$this->input->post('kode'),

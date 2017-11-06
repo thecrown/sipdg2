@@ -27,7 +27,6 @@
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Nama Barang</label>
-
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPassword3"  name="barang"  placeholder="Nama Barang">
                   </div>
@@ -84,13 +83,13 @@
               <div class="box-footer">
                 <div class="row">
                   <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-                <button type="submit" class="btn btn-info btn-md">Simpan</button>
+                <button type="submit"  name="tambah" value="1" class="btn btn-info btn-md">Simpan</button>
                   </div>
                   <div class="col-xs-4 text-center ">
                 <button type="reset" class="btn btn-info btn-md">Batal</button>
                   </div>
                   <div class="col-xs-4 ">
-                <button type="submit" class="btn btn-info pull-right btn-md">Tambah</button>
+                <button type="submit" name="tambah"  value="2" class="btn btn-info pull-right btn-md">Tambah</button>
                   </div>
                   </div>
               </div>

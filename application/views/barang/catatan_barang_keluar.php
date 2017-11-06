@@ -99,11 +99,11 @@
                         <form class="form-horizontal" method="post" action="<?=base_url('UpdateCatatBarangKeluar/').$key->id_keluar;?>">
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Tanggal<span class="text-danger">*</span></label>
-                            <input required="true" type="date" name="tanggal" class="form-control" value="<?=$key->tanggal;?>" id="recipient-name">
+                            <input required type="date" name="tanggal" class="form-control" value="<?=$key->tanggal;?>" id="recipient-name">
                           </div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Nama Barang:<span class="text-danger">*</span></label>
-                          <select class="form-control select2" name="nama" required="true">
+                          <select class="form-control select2" name="nama" required>
                             <option selected>Pilih salah satu</option>
                             <?php if(isset($nama)){
                               foreach ($nama as $row) {?>
@@ -113,11 +113,11 @@
                           </div>
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Jumlah<span class="text-danger">*</span></label>
-                            <input required="true" type="text" name="jumlah" class="form-control" value="<?=$key->jumlah;?>" id="recipient-name">
+                            <input required type="text" name="jumlah" class="form-control" value="<?=$key->jumlah;?>" id="recipient-name">
                           </div>
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Penerima<span class="text-danger">*</span></label>
-                            <input required="true" type="text" name="penerima" class="form-control" value="<?=$key->penerima;?>" id="recipient-name">
+                            <input required type="text" name="penerima" class="form-control" value="<?=$key->penerima;?>" id="recipient-name">
                           </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn btn-info">Update Barang</button>

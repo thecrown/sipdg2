@@ -99,16 +99,16 @@
                         <form class="form-horizontal" method="post" action="<?=base_url('UpdateCatatBarangMasuk/').$key->id_masuk;?>">
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Tanggal<span class="text-danger">*</span></label>
-                            <input required="true" type="date" name="tanggal" class="form-control" value="<?=$key->tanggal;?>" id="recipient-name">
+                            <input type="date" name="tanggal" class="form-control" value="<?=$key->tanggal;?>" id="recipient-name" required>
                           </div>
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Nama Barang<span class="text-danger">*</span></label>
-                            <input required="true" type="text" name="nama" class="form-control" value="<?=$key->nama_barang;?>" id="recipient-name">
+                            <input type="text" name="nama" class="form-control" value="<?=$key->nama_barang;?>" id="recipient-name" required>
                           </div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Kode Satuan:<span class="text-danger">*</span></label>
-                          <select class="form-control select2" name="kode" required="true">
-                            <option selected>Pilih salah satu</option>
+                          <select class="form-control select2" name="kode" required>
+                            <option value="">pilih salah satu</option>
                             <?php if(isset($kode)){
                               foreach ($kode as $row) {?>
                             <option value="<?= $row->id_satuan?>"><?=$row->kode ?>&nbsp;-&nbsp;<?=$row->keterangan ?></option>
@@ -117,9 +117,10 @@
                           </div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Jenis Barang :<span class="text-danger">*</span></label>
-                          <select class="form-control select2" name="jenis" required="true">
-                            <option selected>Pilih salah satu</option>
+                          <select class="form-control select2" name="jenis" required>
+                            <option value="">pilih salah satu</option>
                             <?php if(isset($jenis)){
+
                               foreach ($jenis as $row) {
                                 ?>
                             <option value="<?= $row->id_jenis?>"><?=$row->jenis_barang ?></option>
@@ -128,18 +129,18 @@
                           </div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Jumlah :<span class="text-danger">*</span></label>
-                            <input type="text" required="true" name="jumlah" class="form-control" value="<?=$key->jumlah;?>" id="input1">
+                            <input type="text" name="jumlah" class="form-control" value="<?=$key->jumlah;?>" id="input1" required>
                           </div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Harga :<span class="text-danger">*</span></label>
                             <div class="input-group date"><div class="input-group-addon">
-                    <i class="fa">Rp</i></div><input type="text" name="harga" required class="form-control" value="<?=$key->harga;?>" id="input2">
+                    <i class="fa">Rp</i></div><input type="text" name="harga" class="form-control" value="<?=$key->harga;?>" id="input2" required>
                           </div></div>
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Total Harga :<span class="text-danger">*</span></label>
                             <div class="input-group date"><div class="input-group-addon">
                               <?php $totalharga = $key->harga * $key->jumlah; ?>
-                    <i class="fa">Rp</i></div><input type="text" name="total" required class="form-control" id="output" value="<?php echo $totalharga; ?>">
+                    <i class="fa">Rp</i></div><input type="text" name="total" class="form-control" id="output" value="<?php echo $totalharga; ?>" required>
                           </div></div>
                         
                       

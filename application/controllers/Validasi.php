@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				$return  = $this->Model_admin->AddOperator();
 				if($return == true){
-					$msg['msg'] = "Data Operator berhasil di Tembahkan";
+					$msg['msg'] = "Data Operator berhasil di Tambahkan";
 		            $this->session->set_flashdata($msg);
 		            redirect($this->input->server('HTTP_REFERER')); 
 				}else{
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				$return  = $this->Model_admin->AddAdmin();
 				if($return == true){
-					$msg['msg'] = "Data Admin berhasil di Tembahkan";
+					$msg['msg'] = "Data Admin berhasil di Tambahkan";
 		            $this->session->set_flashdata($msg);
 		            redirect($this->input->server('HTTP_REFERER')); 
 				}else{
@@ -122,11 +122,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            redirect($this->input->server('HTTP_REFERER')); 
 			}else{
 
+ // die(var_dump($this->input->post('tambah')));
 				$return  = $this->Model_barang->TambahBarangMasuk();
 				if($return == true){
-					$msg['msg'] = "Data Barang berhasil di Tembahkan";
-		            $this->session->set_flashdata($msg);
-		            redirect($this->input->server('HTTP_REFERER')); 
+
+					if($this->input->post('tambah')=="2"){
+		        		$msg['msg'] = "Data Barang berhasil di Tambahkan";
+			            $this->session->set_flashdata($msg);
+			            redirect($this->input->server('HTTP_REFERER'));
+
+		        	}else{
+		        		$msg['msg'] = "Data Barang berhasil di Tambahkan";
+		            	$this->session->set_flashdata($msg);
+		        		redirect('Catatan-Masuk');		        		
+		        	} 
+						
 				}else{
 					$msg['msg2'] = "Data Barang Gagal di Tambahkan";
 		            $this->session->set_flashdata($msg);
@@ -177,9 +187,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$id = $this->input->post('nama_barang');
 				$return  = $this->Model_barang->TambahBarangKeluar($id);
 				if($return == true){
-					$msg['msg'] = "Data pencatatan Barang keluar berhasil";
-		            $this->session->set_flashdata($msg);
-		            redirect($this->input->server('HTTP_REFERER')); 
+					if($this->input->post('tambah')=="2"){
+						
+						$msg['msg'] = "Data pencatatan Barang keluar berhasil ditambahkan";
+			            $this->session->set_flashdata($msg);
+			            redirect($this->input->server('HTTP_REFERER'));
+
+					}else{
+						$msg['msg'] = "Data Barang berhasil di Tambahkan";
+		            	$this->session->set_flashdata($msg);
+		        		redirect('Catatan-Keluar');
+					}
+					 
 				}else{
 					$msg['msg2'] = "Barang yang Anda Minta Jumlahnya lebih sedikit dari permintaan";
 		            $this->session->set_flashdata($msg);
