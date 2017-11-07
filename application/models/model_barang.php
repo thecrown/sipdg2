@@ -217,6 +217,26 @@ class Model_barang extends CI_Model {
     	$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
 			return $this->db->get()->result();
 	}
+	//$ina = $key->kode_satuan; $inb = $key->jenis_barang; $inc=$key->nama_barang;
+	public function getdataMasuk($where)
+					
+	{	$this->db->select_SUM('jumlah');
+		$this->db->select('harga');			
+		$this->db->group_by('nama_barang');
+		// $return = $this->db->get_where('barang_masuk',$where)->row(); 
+		return $this->db->get_where('barang_masuk',$where)->result(); 
+		  // die(var_dump($return));
+	}
+	public function getdataKeluar($where2)
+	{
+		die(var_dump($where2));
+		$this->db->select_SUM('jumlah');
+		$this->db->select('harga');			
+		$this->db->group_by('kode_barang');
+		// $return = $this->db->get_where('barang_masuk',$where)->row(); 
+		return $this->db->get_where('barang_keluar',$where2)->result(); 
+		  // die(var_dump($return));
+	}
 
 }
 

@@ -69,6 +69,18 @@
                 	<?php $no=1; ?>
                 	<?php if(isset($data)){ ?>
                 	<?php foreach ($data as $key) {?>
+                	<?php $where = array(
+                		'nama_barang'=>$key->nama_barang,
+                		'jenis_barang'=>$key->id_jenis,
+                		'kode_satuan'=> $key->kode_satuan
+                	);
+                	$where2 = array(
+                		'kode_barang' =>$key->id_barang 
+                	);
+      				$data2 = $this->Model_barang->getdataMasuk($where);
+      				$data3 = $this->Model_barang->getdataKeluar($where2); 
+      				?>
+
                 <tr>
                 	
                   <td><?=$no; ?></td>
@@ -76,8 +88,12 @@
                   <td><?=$key->nama_barang ?></td>
                   <td><?=$key->kode ?></td>
                   <td><?=$key->stock ?>&nbsp;&nbsp;||&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
-                  <td><?=$key->stock ?>&nbsp;&nbsp;||&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
-                  <td><?=$key->stock ?>&nbsp;&nbsp;||&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
+                  <?php foreach ($data2 as $key2) {?>
+                  <td><?=$key2->jumlah ?>&nbsp;&nbsp;||&nbsp;&nbsp;Rp&nbsp;<?=number_format($key2->harga) ?></td>
+              		<?php }?>
+              		<?php foreach ($data3 as $key3) {?>
+                  <td><?=$key3->jumlah ?>&nbsp;&nbsp;||&nbsp;&nbsp;Rp&nbsp;<?=number_format($key3->harga) ?></td>
+              		<?php }?>
                   <td><?=$key->stock ?></td>
                   <td>&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
                 </tr>
