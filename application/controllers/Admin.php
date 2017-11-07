@@ -16,6 +16,11 @@ class Admin extends CI_Controller {
 		$data['main_view']='dashboard';	
 		$this->load->view('tampilan_home',$data);		
 	}
+	public function View_profile(){
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/admin/profile_admin';	
+		$this->load->view('tampilan_home',$data);	
+	}
 	public function BarangKeluar(){
 		$data['sidabar']='sidebar_admin';
 		$data['main_view']='/barang/barang_keluar';
@@ -47,6 +52,43 @@ class Admin extends CI_Controller {
 		$data['jenis']=$this->Model_admin->GetJenis_View();
 		$data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
 		$this->load->view('tampilan_home',$data);	
+	}
+	public function ViewSaldoBulanan()
+	{
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/barang/catatan_bulanan';
+		// $data['kode']=$this->Model_admin->GetKode_View();
+		// $data['jenis']=$this->Model_admin->GetJenis_View();
+		$data['data']=$this->Model_barang->GetSaldoBarang_view();
+
+		$this->load->view('tampilan_home',$data);
+	}
+	public function CariDataBulan(){
+		$cari = $this->Model_barang->CariDataBulan($id);
+		if($cari==true){
+			$msg['msg'] = "Data Pencatatan Barang berhasil dihapus";
+            $this->session->set_flashdata($msg);
+
+	            $data['sidabar']='sidebar_admin';
+				$data['main_view']='/barang/catatan_bulanan';
+				// $data['kode']=$this->Model_admin->GetKode_View();
+				// $data['jenis']=$this->Model_admin->GetJenis_View();
+				// $data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
+				$this->load->view('tampilan_home',$data);
+
+		}else{
+
+			$msg['msg2'] = "Data Pencatatan Barang Gagal dihapus";
+            $this->session->set_flashdata($msg);
+
+            	$data['sidabar']='sidebar_admin';
+				$data['main_view']='/barang/catatan_bulanan';
+				// $data['kode']=$this->Model_admin->GetKode_View();
+				// $data['jenis']=$this->Model_admin->GetJenis_View();
+				// $data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
+				$this->load->view('tampilan_home',$data);
+            
+		}
 	}
 	##########################################################ADMIN###########################################################
 	public function ViewAdmin(){
@@ -116,6 +158,7 @@ class Admin extends CI_Controller {
             redirect($this->input->server('HTTP_REFERER'));
 		}
 	}
+
 }
 
 /* End of file Admin.php */

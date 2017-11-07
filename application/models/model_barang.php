@@ -208,6 +208,15 @@ class Model_barang extends CI_Model {
 			return false;
 		}
 	}
+	public function GetSaldoBarang_view()
+	{
+
+		$this->db->select('*');
+		$this->db->from('barang a');
+    	$this->db->join('satuan b', 'b.id_satuan=a.kode_satuan', 'inner'); 
+    	$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
+			return $this->db->get()->result();
+	}
 
 }
 

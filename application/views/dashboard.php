@@ -47,7 +47,7 @@
 				<div class="icon">
 					<i class="fa fa-files-o"></i>
 				</div>
-				<a href="<?php echo site_url()?>" class="small-box-footer">
+				<a href="<?php echo site_url('Data-Saldo-Bulanan')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>

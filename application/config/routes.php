@@ -26,4 +26,8 @@ $route['UpdateCatatBarangMasuk/(:num)']='Validasi/UpdateCatatBarangMasuk/$1';
 $route['TambahBarangKeluar']='Validasi/TambahBarangKeluar';
 $route['HapusPencatatanBarangKeluar/(:num)']='Admin/HapusPencatatanBarangKeluar/$1';
 $route['UpdateCatatBarangKeluar/(:num)']='Validasi/UpdateCatatBarangKeluar/$1';
+$route['profile/View_profile']='Admin/View_profile';
+$route['Data-Saldo-Bulanan']='Admin/ViewSaldoBulanan';
+$route['CariDataBulan']='Admin/CariDataBulan';
+
 $route['404_override'] = '';

@@ -16,7 +16,8 @@ class Model_login extends CI_model {
 				'user_id'=>$query->row(0)->id_admin,
 				'username'=>$query->row(0)->username,
 				'nama_lengkap'=>$query->row(0)->nama_lengkap,
-				'role'=>$query->row(0)->role
+				'role'=>$query->row(0)->role,
+				'no_telephone'=>$query->row(0)->no_telephone
 			);
 			$this->session->set_userdata($datas);
 			return $this->session->userdata('role');

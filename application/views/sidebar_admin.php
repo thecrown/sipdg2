@@ -26,7 +26,7 @@
             <!-- Menu Footer -->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="<?php echo site_url('profil/tampilan_profil')?>" class="btn btn-default btn-flat">Profil</a>
+                <a href="<?php echo site_url('profile/View_profile')?>" class="btn btn-default btn-flat">Profil</a>
               </div>
               <div class="pull-right">
                 <a href="<?php echo site_url('home/logout');?>" class="btn btn-default btn-flat">Keluar</a>
