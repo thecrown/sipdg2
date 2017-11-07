@@ -69,14 +69,13 @@
                 	<?php $no=1; ?>
                 	<?php if(isset($data)){ ?>
                 	<?php foreach ($data as $key) {?>
-                	<?php $where = array(
-                		'nama_barang'=>$key->nama_barang,
-                		'jenis_barang'=>$key->id_jenis,
-                		'kode_satuan'=> $key->kode_satuan
-                	);
-                	$where2 = array(
-                		'kode_barang' =>$key->id_barang 
-                	);
+
+                	<?php 
+                		$nambar=$key->nama_barang;
+                		$jenba=$key->id_jenis;
+                		$kosa= $key->kode_satuan;
+                		$kobar=$key->id_barang;
+                	
       				
       				
       				?>
@@ -91,34 +90,33 @@
                   <td>
                   	<?=$key->stock ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?>		
                   </td>
-                  		<?php $data2 = $this->Model_barang->getdataMasuk($where);
-                  		if($data2){
-                  		 foreach ($data2 as $key2) {?>
                   <!-- penambahan -->
+                  		<?php $data2 = $this->Model_barang->getdataMasukPerbulan($nambar,$jenba,$kosa);
+                  		 if($data2){
+                       foreach ($data2 as $key2) {?>
                   <td>
                   	<?=$key2->jumlah ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key2->harga) ?>	
                   </td>
               		<?php }}else{?>
-              		<td>Kosong</td>
-					<?php } ?>
-				<!-- pengurangan -->
-              		<?php $data3 = $this->Model_barang->getdataKeluar($where2); 
+                  <td>Kosong</td>
+                  <?php } ?>
+                  <!-- pengurangan -->
+              		<?php $data3 = $this->Model_barang->getdataKeluarPerbulan($kobar); 
               		if($data3){
               			foreach ($data3 as $key3) {?>
                   <td>
                   	<?=$key3->jumlah ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key3->harga) ?>
                   </td>
-					<?php }}else{?>
-					<td>Kosong</td>
-					<?php } ?>
-				<!-- persediaan akhir -->
+                  <?php }}else{?>
+                  <td>Kosong</td>
+                  <?php } ?>
+                  <!-- persediaan akhir -->
                   <td>&nbsp;&nbsp;<?=$key->stock ?></td>
-                <!-- Harga Persediaan Akhir -->
+                  <!-- Harga Persediaan Akhir -->
                   <td>&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
                 </tr>
                 <?php $no++; ?>
                 <?php } } ?>
-
                 </tbody>
                 <tfoot>
                 <tr>
@@ -134,26 +132,6 @@
                 </tr>
                 </tfoot>
               </table>
-              
-              <table class="table table-responsive" border="2">
-              	<tr>
-              		<th>Jumlah Harga Persediaan Barang</th>
-              		<th>Jumlah Harga Penambahan Barang </th>
-              		<th>Jumlah Harga Pengurangan Barang </th>
-              		<th>Jumlah Harga Persediaan Akhir Barang </th>
-              	</tr>
-              	<tr>
-              		<?php $hasil = $this->Model_barang->countPersediaanBarang(); ?>
-              		<td>Rp.<?= number_format($hasil->Total)?></td>
-              		<?php $hasil2 = $this->Model_barang->countPenambahanBarang(); ?>
-              		<td>Rp.<?= number_format($hasil2->Total)?></td>
-              		<?php $hasil3 = $this->Model_barang->countPenguranganBarang(); ?>
-              		<td>Rp.<?= number_format($hasil3->Total)?></td>
-              		<?php $hasil4 = $this->Model_barang->countPersediaanAkhirBarang(); ?>
-              		<td>Rp.<?= number_format($hasil4->Total)?></td>
-              	</tr>
-              </table>
-         	</div>
             </div>
             <!-- /.box-body -->
           </div>

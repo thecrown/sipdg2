@@ -63,31 +63,22 @@ class Admin extends CI_Controller {
 
 		$this->load->view('tampilan_home',$data);
 	}
+
 	public function CariDataBulan(){
-		$cari = $this->Model_barang->CariDataBulan($id);
-		if($cari==true){
-			$msg['msg'] = "Data Pencatatan Barang berhasil dihapus";
-            $this->session->set_flashdata($msg);
+		$this->form_validation->set_rules('tahun', 'Kolom Tahun', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('bulan', 'Kolom bulan', 'trim|xss_clean|required');
 
-	            $data['sidabar']='sidebar_admin';
-				$data['main_view']='/barang/catatan_bulanan';
-				// $data['kode']=$this->Model_admin->GetKode_View();
-				// $data['jenis']=$this->Model_admin->GetJenis_View();
-				// $data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
+		if ($this->form_validation->run()==false) {
+				$msg['msg'] = "Pencarian Data Bulanan tidak Ditemukan";
+	            $this->session->set_flashdata($msg);
+				redirect($this->input->server('HTTP_REFERER'));
+		} else {
+				$msg['msg'] = "Pencarian Data Bulanan Ditemukan";
+	            $this->session->set_flashdata($msg);
+		        $data['sidabar']='sidebar_admin';
+				$data['main_view']='/barang/catatan_perbulan';
+				$data['data']=$this->Model_barang->GetSaldoBarang_view();
 				$this->load->view('tampilan_home',$data);
-
-		}else{
-
-			$msg['msg2'] = "Data Pencatatan Barang Gagal dihapus";
-            $this->session->set_flashdata($msg);
-
-            	$data['sidabar']='sidebar_admin';
-				$data['main_view']='/barang/catatan_bulanan';
-				// $data['kode']=$this->Model_admin->GetKode_View();
-				// $data['jenis']=$this->Model_admin->GetJenis_View();
-				// $data['data']=$this->Model_admin->GetDataBarangMasuk_view();	
-				$this->load->view('tampilan_home',$data);
-            
 		}
 	}
 	##########################################################ADMIN###########################################################
@@ -157,6 +148,14 @@ class Admin extends CI_Controller {
             $this->session->set_flashdata($msg);
             redirect($this->input->server('HTTP_REFERER'));
 		}
+	}
+	public function LaporanPertanggungJawaban()
+	{
+		$data['sidabar']='sidebar_admin';
+		$data['main_view']='/barang/Laporan_PJ';
+		$data['data']=$this->Model_barang->GetSaldoBarang_view();
+		$this->load->view('tampilan_home',$data);
+
 	}
 
 }

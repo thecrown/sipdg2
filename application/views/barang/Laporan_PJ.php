@@ -42,6 +42,7 @@
       </div>
       <div class="col-md-2">
       	<button type="submit" class="btn btn-info">Cari</button>
+        <a class="btn btn-info" href="">Print</a>
       </div>
       </form>
      </div>

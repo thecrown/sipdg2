@@ -61,7 +61,7 @@
 				<div class="icon">
 					<i class="fa fa-list-alt"></i>
 				</div>
-				<a href="<?php echo site_url()?>" class="small-box-footer">
+				<a href="<?php echo site_url('LaporanPertanggungJawaban')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>

@@ -220,7 +220,8 @@ class Model_barang extends CI_Model {
 	//$ina = $key->kode_satuan; $inb = $key->jenis_barang; $inc=$key->nama_barang;
 	public function getdataMasuk($where)
 					
-	{	$this->db->select_SUM('jumlah');
+	{	
+		$this->db->select_SUM('jumlah');
 		$this->db->select('harga');			
 		$this->db->group_by('nama_barang');
 		// $return = $this->db->get_where('barang_masuk',$where)->row(); 
@@ -229,13 +230,56 @@ class Model_barang extends CI_Model {
 	}
 	public function getdataKeluar($where2)
 	{
-		die(var_dump($where2));
 		$this->db->select_SUM('jumlah');
 		$this->db->select('harga');			
 		$this->db->group_by('kode_barang');
 		// $return = $this->db->get_where('barang_masuk',$where)->row(); 
 		return $this->db->get_where('barang_keluar',$where2)->result(); 
 		  // die(var_dump($return));
+	}
+	public function getdataMasukPerbulan($nambar,$jenba,$kosa){
+		$where = array(
+			'nama_barang'=>$nambar,
+			'jenis_barang'=>$jenba,
+            'kode_satuan'=> $kosa,
+            'MONTH(tanggal)'=>$this->input->post('bulan'),
+            'YEAR(tanggal)'=>$this->input->post('tahun')
+		);
+		$this->db->select_SUM('jumlah');
+		$this->db->select('harga');			
+		$this->db->group_by('nama_barang');
+		return $this->db->get_where('barang_masuk',$where)->result(); 
+	}
+	public function getdataKeluarPerbulan($kobar)
+	{
+		$where2=array(
+			'kode_barang' =>$kobar,
+			'MONTH(tanggal)'=>$this->input->post('bulan'),
+            'YEAR(tanggal)'=>$this->input->post('tahun')
+		);
+		$this->db->select_SUM('jumlah');
+		$this->db->select('harga');			
+		$this->db->group_by('kode_barang');
+		// $return = $this->db->get_where('barang_masuk',$where)->row(); 
+		return $this->db->get_where('barang_keluar',$where2)->result(); 
+		  // die(var_dump($return));
+	}
+	public function countPersediaanBarang()
+	{
+		return $this->db->query('SELECT SUM(stock * harga_barang) as Total FROM barang')->row();
+		
+	}
+	public function countPenambahanBarang()
+	{
+		return $this->db->query('SELECT SUM(jumlah * harga) as Total FROM barang_masuk')->row();
+	}
+	public function countPenguranganBarang()
+	{
+		return $this->db->query('SELECT SUM(jumlah * harga) as Total FROM barang_keluar')->row();
+	}
+	public function countPersediaanAkhirBarang()
+	{
+		return $this->db->query('SELECT SUM(stock * harga_barang) as Total FROM barang')->row();
 	}
 
 }
