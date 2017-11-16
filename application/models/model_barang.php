@@ -183,21 +183,22 @@ class Model_barang extends CI_Model {
 
 		}else{
 			$datastock = $getdatalama->stock - $getdata->jumlah;
-
-			$databarang = array(
+			
+			if($datastock<0){
+				return false;
+			}else{
+				$databarang = array(
 				'stock'=>$datastock
 			);
 
 			$updatebarang = $this->db->update('barang', $databarang);
-
+			
 			$hapus = array(
 				'id_masuk'=>$id
 			);
-
 			$deletebarangmasuk = $this->db->delete('barang_masuk',$hapus);
 			
 			$databarang = array(
-
 			'nama_barang'=>strtolower($this->input->post('nama')),
 			'kode_satuan'=>$this->input->post('kode'),
 			'jenis_barang'=>$this->input->post('jenis')
@@ -226,6 +227,7 @@ class Model_barang extends CI_Model {
 			);
 
 			$querybarangmasuk = $this->db->insert('barang_masuk', $datainsert);
+			}
 		}
 
 		if($updatebarang==true && $updatebarangmasuk==true){
