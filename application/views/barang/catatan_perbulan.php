@@ -1,7 +1,6 @@
     <section class="content-header">
       <h1>
-        Data Masuk
-        <small>advanced tables</small>
+        Data Saldo Bulanan
       </h1>
     </section>
 
@@ -42,6 +41,7 @@
       </div>
       <div class="col-md-2">
       	<button type="submit" class="btn btn-info">Cari</button>
+        <a role="button" href="#print" class="btn btn-success" data-toggle="modal"">Print</a>
       </div>
       </form>
      </div>
@@ -58,79 +58,68 @@
                   <th>Jenis Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>
-                  <th>Banyak & Harga (Rp) Persediaan </th>
-                  <th>Banyak & Harga (Rp)  Penambahan </th>
-                  <th>Banyak & Harga (Rp)  Pengurangan </th>
+                  <th colspan="2">Banyak Persediaan & Harga (Rp) Persediaan</th>
+                  <th colspan="2">Banyak Penambahan & Harga (Rp) Penambahan</th>
+                  <th colspan="2">Banyak pengurangan & Harga (Rp) pengurangan</th>
                   <th>Banyak Persediaan Akhir </th>
                   <th>Harga Persediaan Akhir </th>
                 </tr>
                 </thead>
                 <tbody>
-                	<?php $no=1; ?>
-                	<?php if(isset($data)){ ?>
-                	<?php foreach ($data as $key) {?>
+                  <?php $no=1; ?>
+                  <?php foreach ($data as $key): ?>
+                  <tr>
+                    <td><?=$no?></td>
+                   <td><?=$key->jenis_barang ?></td> 
+                   <td><?=$key->nama_barang ?></td> 
+                   <td><?=$key->kode ?></td> 
+                   <td><?=$key->stock ?></td> 
+                   <td>Rp.<?= number_format($key->harga_barang )?></td>
+                    <?php $jumlah = $this->Model_barang->getpenambahan2($key->id_barang); ?>
+                   <td><?=$jumlah->jumlah?></td>
+                   <td>Rp.<?= number_format($key->harga_barang)?></td>
+                   <?php $pengurangan = $this->Model_barang->getpengurangan2($key->id_barang); ?>
+                   <td><?=$pengurangan->jumlah?></td>
+                   <td>Rp.<?= number_format($key->harga_barang)?></td>
+                   <td><?=$key->stock ?></td>
+                   <td><?=$key->harga_barang ?></td>
+                  </tr>
+                  <?php $no++; ?>                    
+                  <?php endforeach ?>
 
-                	<?php 
-                		$nambar=$key->nama_barang;
-                		$jenba=$key->id_jenis;
-                		$kosa= $key->kode_satuan;
-                		$kobar=$key->id_barang;
-                	
-      				
-      				
-      				?>
-
-                <tr>
-                	
-                  <td><?=$no; ?></td>
-                  <td><?=$key->jenis_barang ?></td>
-                  <td><?=$key->nama_barang ?></td>
-                  <td><?=$key->kode ?></td>
-                  <!-- persediaan -->
-                  <td>
-                  	<?=$key->stock ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?>		
-                  </td>
-                  <!-- penambahan -->
-                  		<?php $data2 = $this->Model_barang->getdataMasukPerbulan($nambar,$jenba,$kosa);
-                  		 if($data2){
-                       foreach ($data2 as $key2) {?>
-                  <td>
-                  	<?=$key2->jumlah ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key2->harga) ?>	
-                  </td>
-              		<?php }}else{?>
-                  <td>Kosong</td>
-                  <?php } ?>
-                  <!-- pengurangan -->
-              		<?php $data3 = $this->Model_barang->getdataKeluarPerbulan($kobar); 
-              		if($data3){
-              			foreach ($data3 as $key3) {?>
-                  <td>
-                  	<?=$key3->jumlah ?>&nbsp;&nbsp;&#x21A8;&nbsp;&nbsp;Rp&nbsp;<?=number_format($key3->harga) ?>
-                  </td>
-                  <?php }}else{?>
-                  <td>Kosong</td>
-                  <?php } ?>
-                  <!-- persediaan akhir -->
-                  <td>&nbsp;&nbsp;<?=$key->stock ?></td>
-                  <!-- Harga Persediaan Akhir -->
-                  <td>&nbsp;&nbsp;Rp&nbsp;<?=number_format($key->harga_barang) ?></td>
-                </tr>
-                <?php $no++; ?>
-                <?php } } ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>No</th>
+                  <th>No</th>
                   <th>Jenis Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>
-                  <th>Banyak & Harga (Rp) Persediaan </th>
-                  <th>Banyak & Harga (Rp)  Penambahan </th>
-                  <th>Banyak & Harga (Rp)  Pengurangan </th>
+                  <th colspan="2">Banyak Persediaan & Harga (Rp) Persediaan</th>
+                  <th colspan="2">Banyak Penambahan & Harga (Rp) Penambahan</th>
+                  <th colspan="2">Banyak pengurangan & Harga (Rp) pengurangan</th>
                   <th>Banyak Persediaan Akhir </th>
                   <th>Harga Persediaan Akhir </th>
                 </tr>
                 </tfoot>
+              </table>
+              
+              <table class="table table-responsive" border="2">
+                <tr>
+                  <th>Jumlah Harga Persediaan Barang</th>
+                  <th>Jumlah Harga Penambahan Barang </th>
+                  <th>Jumlah Harga Pengurangan Barang </th>
+                  <th>Jumlah Harga Persediaan Akhir Barang </th>
+                </tr>
+                <tr>
+                  <?php $hasil = $this->Model_barang->countPersediaanBarang(); ?>
+                  <td>Rp.<?= number_format($hasil->Total)?></td>
+                  <?php $hasil2 = $this->Model_barang->countPenambahanBarang2(); ?>
+                  <td>Rp.<?= number_format($hasil2->Total)?></td>
+                  <?php $hasil3 = $this->Model_barang->countPenguranganBarang2(); ?>
+                  <td>Rp.<?= number_format($hasil3->Total)?></td>
+                  <?php $hasil4 = $this->Model_barang->countPersediaanAkhirBarang(); ?>
+                  <td>Rp.<?= number_format($hasil4->Total)?></td>
+                </tr>
               </table>
             </div>
             <!-- /.box-body -->

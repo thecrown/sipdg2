@@ -70,7 +70,15 @@
           <li  class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
         </ul>
       </li>
-
+      <li class="treeview">
+        <a>
+          <i class="fa fa-list-alt"></i> <span>Daftar Barang</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li  class="treeview"><a href="<?= base_url('Daftar-Barang')?>"><i class="fa fa-circle-o"></i>Daftar Data Barang</a></li>
+        </ul>
+      </li>
       <li class="header">HALAMAN ADMIN</li>
       <li class="treeview">
         <a href="<?php echo site_url('daftar-admin')?>">

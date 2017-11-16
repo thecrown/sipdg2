@@ -94,10 +94,11 @@
 			return $this->db->get('barang')->result();
 		}
 		public function GetDataBarangMasuk_view(){
-			 		$this->db->select('*');
+			 		$this->db->select('a.id_masuk,a.tanggal,c.kode,a.nama_barang,a.jumlah,b.jenis_barang,d.harga_barang,');
 			 		$this->db->from('barang_masuk a');
-			 		$this->db->join('jenis_barang b', 'b.id_jenis=a.jenis_barang', 'left');
-    				$this->db->join('satuan c', 'c.id_satuan=a.kode_satuan', 'left'); 
+			 		$this->db->join('jenis_barang b', 'b.id_jenis=a.jenis_barang', 'inner');
+    				$this->db->join('satuan c', 'c.id_satuan=a.kode_satuan', 'inner'); 
+    				$this->db->join('barang d', 'd.id_barang=a.kode_barang', 'inner'); 
 			return $this->db->get()->result();
 		}
 		public function GetDataBarangKeluar_view(){
@@ -107,8 +108,35 @@
     				$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
     				$this->db->join('barang_keluar d', 'd.kode_barang=a.id_barang', 'inner'); 
 			return $this->db->get()->result();
-		}	
+		}
+		public function GetDataBarangKeluarOperator_view(){
+					$where =array(
+						'd.id_user'=>$this->session->userdata('user_id')
+					);
+					$this->db->select('*');
+			 		$this->db->from('barang a');
+    				$this->db->join('satuan b', 'b.id_satuan=a.kode_satuan', 'inner'); 
+    				$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
+    				$this->db->join('barang_keluar d', 'd.kode_barang=a.id_barang', 'inner');
+    				$this->db->where($where);
+			return $this->db->get()->result();
+		}
+		public function UpdatePassword($id)
+			{
+				$data = array(
+					'password'=>md5(md5($this->input->post('password')))
+				);
+				$where = array(
+					'id_admin'=>$id,
+					'role'=>$this->input->post('role')
+				);
+				$update = $this->db->update('admin',$data,$where);
+				if($update==true){
+					return true;
+				}else{
+					return false;
+				}
+			}	
 	}
 	
 	
- ?>

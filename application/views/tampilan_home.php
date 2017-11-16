@@ -47,7 +47,56 @@
         </footer>
         </center>
       </div>
+    <div class="modal fade" id="print" role="dialog">
+    <div class="modal-dialog">
     
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Print Data</h4>
+        </div>
+        <form action="<?=base_url('Print')?>" method="post">
+        <div class="modal-body">
+           <div class="form-group">
+
+                  <label for="inputPassword3" class="col-sm-3 control-label">Bulan</label>
+                  <select class="form-control select2" name="bulan" required>
+                    <option value="all">Cetak Semua Data</option>
+                  <option value="1">Januari</option>
+                  <option value="2">Februari</option>
+                  <option value="3">Maret</option>
+                  <option value="4">April</option>
+                  <option value="5">Mei</option>
+                  <option value="6">Juni</option>
+                  <option value="7">Juli</option>
+                  <option value="8">Agustus</option>
+                  <option value="9">September</option>
+                  <option value="10">Oktober</option>
+                  <option value="11">November</option>
+                  <option value="12">Desember</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-3 control-label">Tahun</label>
+                  <select class="form-control select2" name="tahun" required>
+                    <option value="all">Cetak Semua Data</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  </select>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info">Print</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
     <!-- jQuery 2.2.0 -->
     <script src="<?php echo base_url('assets/js/jQuery-2.2.0.min.js'); ?>"></script>
     <!-- jQuery UI 1.11.4 -->

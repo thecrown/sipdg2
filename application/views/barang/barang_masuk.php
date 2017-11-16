@@ -1,6 +1,6 @@
 <section class="content-header">
       <h1>
-        Catatan Barang Masuk
+        Catat Barang Masuk
       </h1>
     </section>
 <section class="content">

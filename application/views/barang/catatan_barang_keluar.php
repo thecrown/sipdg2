@@ -1,7 +1,6 @@
     <section class="content-header">
       <h1>
-        Data Keluar
-        <small>advanced tables</small>
+        Data Barang Keluar 
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -15,11 +14,12 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <span <?php if($this->session->userdata('role')!="admin"){echo "hidden";} ?>><a role="button" href="<?=base_url('cetakkeluar') ?>" class="btn btn-success"><i class="fa fa-print bigicon" >&nbsp;&nbsp;Cetak</i></a></span>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
+
                 <thead>
                 <tr>
                   <th>No</th>
@@ -45,14 +45,14 @@
                   <td><?=$key->nama_barang ?></td>
                   <td><?=$key->jumlah ?></td>
                   <td><?=$key->jenis_barang ?></td>
-                  <td><?=$key->harga_barang ?></td>
-                   <?php $total = $key->harga * $key->jumlah; ?>
-                  <td><?=$total ?></td>
+                  <td>Rp <?=number_format($key->harga_barang) ?></td>
+                   <?php $total = $key->harga_barang * $key->jumlah; ?>
+                  <td>Rp <?=number_format($total) ?></td>
                   <td><?=$key->penerima ?></td>
                   <td>
                     <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_keluar;?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
-                    <span data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_keluar;?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
+                    <span <?php if($this->session->userdata('role')!="admin"){echo "hidden";} ?> data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_keluar;?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
                     
                   </td>
@@ -72,7 +72,7 @@
                            
                           <br>Nama Barang :&nbsp;<?=$key->nama_barang; ?> 
                           <br>Jumlah :&nbsp;<?=$key->jumlah;?>
-                          <br>Harga Satuan :&nbsp;<?=$key->harga;?>
+                          <br>Harga Satuan :&nbsp;<?=$key->harga_barang;?>
                           <br>Tanggal Pencatatan :&nbsp;<?=$key->tanggal;?>
                         </p>
                       </div>
@@ -90,7 +90,7 @@
                   
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update Barang Masuk</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Update Barang Keluar</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -104,7 +104,7 @@
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Nama Barang:<span class="text-danger">*</span></label>
                           <select class="form-control select2" name="nama" required>
-                            <option selected>Pilih salah satu</option>
+                            <option value="">Pilih salah satu</option>
                             <?php if(isset($nama)){
                               foreach ($nama as $row) {?>
                             <option value="<?=$row->id_barang ?>"><?=$row->nama_barang ?></option>

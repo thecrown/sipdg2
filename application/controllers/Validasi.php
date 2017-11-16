@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		public function UpdateAdmin(){
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean|is_natural');
 			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('matchPassword', 'Password', 'trim|required|xss_clean|matches[Password]');
 			if($this->form_validation->run()==false){
@@ -35,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function UpdateOperator(){
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean|is_natural');
 			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('matchPassword', 'Password', 'trim|required|xss_clean|matches[Password]');
 			if($this->form_validation->run()==false){
@@ -61,8 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function AddOperator(){
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean|is_natural');
 			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('matchPassword', 'Password', 'trim|required|xss_clean|matches[Password]');
 			if($this->form_validation->run()==false){
@@ -85,8 +85,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function AddAdmin(){
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('no_telephone', 'No Telephone', 'trim|required|xss_clean|is_natural');
 			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('matchPassword', 'Password', 'trim|required|xss_clean|matches[Password]');
 			if($this->form_validation->run()==false){
@@ -109,12 +109,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function TambahBarangMasuk(){
 			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('barang', 'Nama Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('barang', 'Nama Barang', 'trim|required|xss_clean|alpha_numeric_spaces');
 			$this->form_validation->set_rules('kode', 'Kode Satuan', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('jenis', 'Jenis Barang', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('stock', 'Jumlah', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('total', 'Total Harga', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('stock', 'Jumlah', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('total', 'Total Harga', 'trim|required|xss_clean|numeric');
 
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
@@ -147,12 +147,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	public function UpdateCatatBarangMasuk($id)
 	{
 			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean|alpha_numeric_spaces');
 			$this->form_validation->set_rules('kode', 'Kode Satuan', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('jenis', 'Jenis Barang', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('total', 'Total Harga', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean|numeric');
 
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
@@ -175,9 +174,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	public function TambahBarangKeluar()
 	{
 			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean|alpha_numeric_spaces');
 				
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
@@ -208,9 +207,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function UpdateCatatBarangKeluar($id){
 			$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean|alpha_numeric_spaces');
+			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean|alpha_numeric_spaces');
 			
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
@@ -224,7 +223,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		            $this->session->set_flashdata($msg);
 		            redirect($this->input->server('HTTP_REFERER')); 
 				}else{
-					$msg['msg2'] = "Data pencatatan Barang Gagal di Update";
+					$msg['msg2'] = "Data pencatatan Barang Gagal  di Update karena Jumlah Barang Kurang ";
 		            $this->session->set_flashdata($msg);
 		            redirect($this->input->server('HTTP_REFERER'));
 				}

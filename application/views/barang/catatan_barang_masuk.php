@@ -1,7 +1,6 @@
     <section class="content-header">
       <h1>
-        Data Masuk
-        <small>advanced tables</small>
+        Data Barang Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -15,7 +14,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <span><a role="button" href="<?=base_url('cetakmasuk') ?>" class="btn btn-success"><i class="fa fa-print bigicon" >&nbsp;&nbsp;Cetak</i></a></span>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -44,9 +43,9 @@
                   <td><?=$key->nama_barang ?></td>
                   <td><?=$key->jumlah ?></td>
                   <td><?=$key->jenis_barang ?></td>
-                  <td><?=$key->harga ?></td>
-                  <?php $total = $key->harga * $key->jumlah; ?>
-                  <td><?=$total ?></td>
+                  <td>Rp <?=number_format($key->harga_barang) ?></td>
+                  <?php $total = $key->harga_barang * $key->jumlah; ?>
+                  <td>Rp <?=number_format($total) ?></td>
                   <td>
                     <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_masuk;?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
@@ -71,7 +70,7 @@
                            
                           <br>Nama Barang :&nbsp;<?=$key->nama_barang; ?> 
                           <br>Jumlah :&nbsp;<?=$key->jumlah;?>
-                          <br>Harga Satuan :&nbsp;<?=$key->harga;?>
+                          <br>Harga Satuan :&nbsp;<?=$key->harga_barang;?>
                           <br>Tanggal Pencatatan :&nbsp;<?=$key->tanggal;?>
                         </p>
                       </div>
@@ -134,13 +133,7 @@
                           <div class="form-group">
                             <label for="recipient-name" class="form-control-label">Harga :<span class="text-danger">*</span></label>
                             <div class="input-group date"><div class="input-group-addon">
-                    <i class="fa">Rp</i></div><input type="text" name="harga" class="form-control" value="<?=$key->harga;?>" id="input2" required>
-                          </div></div>
-                          <div class="form-group">
-                            <label for="recipient-name" class="form-control-label">Total Harga :<span class="text-danger">*</span></label>
-                            <div class="input-group date"><div class="input-group-addon">
-                              <?php $totalharga = $key->harga * $key->jumlah; ?>
-                    <i class="fa">Rp</i></div><input type="text" name="total" class="form-control" id="output" value="<?php echo $totalharga; ?>" required>
+                    <i class="fa">Rp</i></div><input type="text" name="harga" class="form-control" value="<?=$key->harga_barang;?>" id="input2" required>
                           </div></div>
                         
                       

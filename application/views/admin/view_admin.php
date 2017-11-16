@@ -1,7 +1,6 @@
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Daftar Admin
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -30,6 +29,7 @@
                   <th>Options</th>
                 </tr>
                 </thead>
+                
                 <tbody>
                   <?php $no=1; ?>
                   <?php foreach ($data as $key) {?>
@@ -40,8 +40,12 @@
                   <td><?= $key->nama_lengkap ?></td>
                   <td><?= $key->no_telephone ?></td>
                   <td>
-                    <span data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_admin;?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
-                    &nbsp;&nbsp;&nbsp;
+                    
+                    <span <?php 
+                    if($this->session->userdata('user_id')==$key->id_admin)
+                    {
+                      echo "hidden";
+                }?> data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_admin;?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
                     <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_admin;?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
                   </td>
@@ -191,9 +195,11 @@
                 </div>
 
 
+                
                 <?php $no++; ?>
                 <?php } ?>
                 </tbody>
+
                 <tfoot>
                 <tr>
                   <th>No</th>

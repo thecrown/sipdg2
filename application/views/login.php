@@ -32,7 +32,7 @@
       <section class="row">
         <form role="login" action="<?php echo base_url('verif');?>" method="post">
 
-          <h5><p><b>Admin Silakan Login !</p></h5></b>
+          
           <div class="form-group">      
             <input type="text" id="username" name="username" placeholder="Masukkan Username" class="form-control" autofocus="autofocus" value="<?php echo set_value('username')?>"><span class="glyphicon glyphicon-user"></span>
           </div>
