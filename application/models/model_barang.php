@@ -8,7 +8,8 @@ class Model_barang extends CI_Model {
 		$data = array(
 			'nama_barang'=>strtolower($this->input->post('barang')),
 			'kode_satuan'=>$this->input->post('kode'),
-			'jenis_barang'=>$this->input->post('jenis')
+			'jenis_barang'=>$this->input->post('jenis'),
+			'harga_barang'=>$this->input->post('harga')
 		);
 
 		$result = $this->db->get_where('barang',$data)->row();
@@ -21,19 +22,11 @@ class Model_barang extends CI_Model {
 			//insert barang masuk
 			$stock = $result->stock + $this->input->post('stock');
 
-			if($result->harga_barang<$this->input->post('harga')){
 				$datainput =array(
 					'harga_barang'=>$this->input->post('harga'),
 					'stock'=>$stock
 				);
-				$queryupdate = $this->db->update('barang',$datainput,$data);
-			}else{
-				$data2 = array(
-					'stock'=>$stock
-				);
-				$queryupdate = $this->db->update('barang',$data2,$data);
-			}
-				
+				$queryupdate = $this->db->update('barang',$datainput,$data);				
 
 				$dataBarang = array(
 					'kode_barang'=>$result->id_barang,
@@ -41,7 +34,8 @@ class Model_barang extends CI_Model {
 					'nama_barang'=>strtolower($this->input->post('barang')),
 					'kode_satuan'=>$this->input->post('kode'),
 					'jenis_barang'=>$this->input->post('jenis'),
-					'jumlah'=>$this->input->post('stock')
+					'jumlah'=>$this->input->post('stock'),
+					'lokasi'=>$this->input->post('lokasi')
 				);
 			$queryinsert = $this->db->insert('barang_masuk', $dataBarang);
 
@@ -67,7 +61,8 @@ class Model_barang extends CI_Model {
 					'nama_barang'=>strtolower($this->input->post('barang')),
 					'kode_satuan'=>$this->input->post('kode'),
 					'jenis_barang'=>$this->input->post('jenis'),
-					'jumlah'=>$this->input->post('stock')
+					'jumlah'=>$this->input->post('stock'),
+					'lokasi'=>$this->input->post('lokasi')
 				);
 			$querybarangmasuk = $this->db->insert('barang_masuk', $dataBarangMasuk);
 			
@@ -143,7 +138,8 @@ class Model_barang extends CI_Model {
 				'nama_barang'=>strtolower($this->input->post('nama')),
 				'kode_satuan'=>$this->input->post('kode'),
 				'jenis_barang'=>$this->input->post('jenis'),
-				'jumlah'=>$this->input->post('jumlah')
+				'jumlah'=>$this->input->post('jumlah'),
+				'lokasi'=>$this->input->post('lokasi')
 				);
 
 			$updatebarangmasuk = $this->db->update('barang_masuk', $datamasukbaru, $where);
@@ -223,7 +219,8 @@ class Model_barang extends CI_Model {
 				'nama_barang'=>$this->input->post('nama'),
 				'kode_satuan'=>$this->input->post('kode'),
 				'jenis_barang'=>$this->input->post('jenis'),
-				'jumlah'=>$this->input->post('jumlah')
+				'jumlah'=>$this->input->post('jumlah'),
+				'lokasi'=>$this->input->post('lokasi')
 			);
 
 			$querybarangmasuk = $this->db->insert('barang_masuk', $datainsert);
@@ -256,6 +253,7 @@ class Model_barang extends CI_Model {
 					'kode_barang'=> $id,
 					'jumlah' => $this->input->post('jumlah'),
 					'penerima' => $this->input->post('penerima'),
+					'lokasi' => $this->input->post('lokasi'),
 					'id_user'=>$this->session->userdata('user_id')
 				);
 			$insertDataKeluar = $this->db->insert('barang_keluar', $dataKeluar);
@@ -267,6 +265,7 @@ class Model_barang extends CI_Model {
 		}
 
 	}
+
 	public function HapusPencatatanBarangKeluar($id)
 	{
 		$where = array(
@@ -325,7 +324,8 @@ class Model_barang extends CI_Model {
 								'tanggal' => $this->input->post('tanggal'),
 								'kode_barang'=> $getdata->id_barang,
 								'jumlah' => $this->input->post('jumlah'),
-								'penerima' => $this->input->post('penerima') 
+								'penerima' => $this->input->post('penerima'),
+								'lokasi'=>$this->input->post('lokasi')
 							);
 						$insertDataKeluar = $this->db->insert('barang_keluar', $dataKeluar);
 						$deleteRecenlykeluar = $this->db->delete('barang_keluar',array('id_keluar'=>$id));
@@ -348,7 +348,8 @@ class Model_barang extends CI_Model {
 					'tanggal'=>$this->input->post('tanggal'),
 					'kode_barang'=> $this->input->post('nama'),
 					'jumlah'=>$this->input->post('jumlah'),
-					'penerima'=>$this->input->post('penerima')
+					'penerima'=>$this->input->post('penerima'),
+					'lokasi'=>$this->input->post('lokasi')
 					);
 				$updatePencatatanBarang = $this->db->update('barang_keluar', $dataUpdate, $where);
 				}

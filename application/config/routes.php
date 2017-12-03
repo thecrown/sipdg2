@@ -9,15 +9,15 @@ $route['operator']='operator';
 $route['Dashboard']='admin';
 $route['daftar-admin']='admin/ViewAdmin';
 $route['daftar-operator']='admin/ViewOperator';
-$route['Barang-Masuk']='admin/BarangMasuk';
+$route['Barang-Masuk']='operator/BarangMasuk';
 $route['TambahBarangMasuk']='Validasi/TambahBarangMasuk';
-$route['Catatan-Masuk']='admin/CatatanBarangMasuk';
-$route['HapusPencatatanBarang/(:num)']='Admin/HapusPencatatanBarang/$1';
+$route['Catatan-Masuk']='operator/CatatanBarangMasuk';
+$route['HapusPencatatanBarang/(:num)']='Operator/HapusPencatatanBarang/$1';
 $route['HapusBarang/(:num)']='Admin/HapusBarang/$1';
 $route['UpdateDataBarang/(:num)']='Admin/UpdateDataBarang/$1';
-
-$route['Catatan-Keluar']='admin/CatatanBarangKeluar';
-$route['Barang-Keluar']='admin/BarangKeluar';
+$route['ViewBarangKeluar']='operator/ViewBarangKeluar';
+$route['Catatan-Keluar']='operator/CatatanBarangKeluar';
+$route['Barang-Keluar']='operator/BarangKeluar';
 
 $route['HapusAdmin/(:num)']='admin/HapusAdmin/$1';
 $route['EditAdmin/(:num)']='admin/EditAdmin/$1';
@@ -32,7 +32,7 @@ $route['Barang-Keluar-Operator']='Operator/BarangKeluarOperator';
 
 $route['UpdateCatatBarangMasuk/(:num)']='Validasi/UpdateCatatBarangMasuk/$1';
 $route['TambahBarangKeluar']='Validasi/TambahBarangKeluar';
-$route['HapusPencatatanBarangKeluar/(:num)']='Admin/HapusPencatatanBarangKeluar/$1';
+$route['HapusPencatatanBarangKeluar/(:num)']='Operator/HapusPencatatanBarangKeluar/$1';
 $route['UpdateCatatBarangKeluar/(:num)']='Validasi/UpdateCatatBarangKeluar/$1';
 $route['profile/View_profile']='Admin/View_profile';
 $route['Data-Saldo-Bulanan']='Admin/ViewSaldoBulanan';

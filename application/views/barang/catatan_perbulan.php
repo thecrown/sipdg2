@@ -41,7 +41,7 @@
       </div>
       <div class="col-md-2">
       	<button type="submit" class="btn btn-info">Cari</button>
-        <a role="button" href="#print" class="btn btn-success" data-toggle="modal"">Print</a>
+        <!-- <a role="button" href="#print" class="btn btn-success" data-toggle="modal"">Print</a> -->
       </div>
       </form>
      </div>

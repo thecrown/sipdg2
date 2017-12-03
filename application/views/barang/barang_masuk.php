@@ -78,6 +78,13 @@
                     <i class="fa">Rp</i></div><input type="text" class="form-control" id="output" name="total" placeholder="Total Harga"></div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Lokasi</label>
+                  <div class="col-sm-10">
+                    <div class="input-group date"><div class="input-group-addon">
+                    <i class="fa fa-map-o"></i></div><input type="text" class="form-control" id="output" name="lokasi" placeholder="Lokasi"></div>
+                  </div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">

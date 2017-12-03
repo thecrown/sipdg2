@@ -138,32 +138,8 @@ class Admin extends CI_Controller {
 	}
 	########################################################End Operator###########################################################
 	#######################################################Barang ############################################################
-	public function HapusPencatatanBarang($id)
-	{
-		$hapus = $this->Model_barang->HapusPencatatanBarang($id);
-		if($hapus==true){
-			$msg['msg'] = "Data Pencatatan Barang berhasil dihapus";
-            $this->session->set_flashdata($msg);
-            redirect($this->input->server('HTTP_REFERER')); 
-		}else{
-			$msg['msg2'] = "Data Pencatatan Barang Gagal dihapus";
-            $this->session->set_flashdata($msg);
-            redirect($this->input->server('HTTP_REFERER'));
-		}
-	}
-	public function HapusPencatatanBarangKeluar($id)
-	{
-		$hapus = $this->Model_barang->HapusPencatatanBarangKeluar($id);
-		if($hapus==true){
-			$msg['msg'] = "Data Pencatatan Barang berhasil dihapus";
-            $this->session->set_flashdata($msg);
-            redirect($this->input->server('HTTP_REFERER')); 
-		}else{
-			$msg['msg2'] = "Data Pencatatan Barang Gagal dihapus";
-            $this->session->set_flashdata($msg);
-            redirect($this->input->server('HTTP_REFERER'));
-		}
-	}
+	
+	
 	public function LaporanPertanggungJawaban()
 	{
 		$data['sidabar']='sidebar_admin';

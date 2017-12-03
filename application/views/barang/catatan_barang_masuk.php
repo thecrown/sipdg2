@@ -14,7 +14,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <span><a role="button" href="<?=base_url('cetakmasuk') ?>" class="btn btn-success"><i class="fa fa-print bigicon" >&nbsp;&nbsp;Cetak</i></a></span>
+              <!-- <span><a role="button" href="<?=base_url('cetakmasuk') ?>" class="btn btn-success"><i class="fa fa-print bigicon" >&nbsp;&nbsp;Cetak</i></a></span> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -29,6 +29,7 @@
                   <th>Jenis Barang</th>
                   <th>Harga/Satuan</th>
                   <th>Total Harga</th>
+                  <th>Lokasi</th> 
                   <th>Pilihan</th>
                 </tr>
                 </thead>
@@ -46,6 +47,7 @@
                   <td>Rp <?=number_format($key->harga_barang) ?></td>
                   <?php $total = $key->harga_barang * $key->jumlah; ?>
                   <td>Rp <?=number_format($total) ?></td>
+                  <td><?=$key->lokasi ?></td>
                   <td>
                     <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_masuk;?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
@@ -134,7 +136,12 @@
                             <label for="recipient-name" class="form-control-label">Harga :<span class="text-danger">*</span></label>
                             <div class="input-group date"><div class="input-group-addon">
                     <i class="fa">Rp</i></div><input type="text" name="harga" class="form-control" value="<?=$key->harga_barang;?>" id="input2" required>
-                          </div></div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Lokasi :<span class="text-danger">*</span></label>
+                            <input type="text" name="lokasi" class="form-control" value="<?=$key->lokasi;?>" id="input1" required>
+                          </div>
                         
                       
                       <div class="modal-footer">
@@ -163,6 +170,7 @@
                   <th>Jenis Barang</th>
                   <th>Harga/Satuan</th>
                   <th>Total Harga</th>
+                  <th>Lokasi</th> 
                   <th>Pilihan</th>
                 </tr>
                 </tfoot>

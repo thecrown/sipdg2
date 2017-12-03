@@ -51,7 +51,7 @@
           <i class="fa fa-dashboard"></i><span>Dashboard</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a>
           <i class="fa fa-list-alt"></i> <span>Catat Barang Keluar</span>
           <i class="fa fa-angle-left pull-right"></i>
@@ -60,8 +60,26 @@
           <li><a href="<?php echo site_url('AmbilBarang')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
           <li><a href="<?php echo site_url('Barang-Keluar-Operator')?>"><i class="fa fa-circle-o"></i>Daftar Barang yang Diambil</a></li>
         </ul>
+      </li> -->
+      <li class="treeview">
+        <a href="<?php echo site_url('')?>">
+          <i class="fa fa-list-alt"></i><span>Barang Masuk</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+         <ul class="treeview-menu">
+          <li  class="treeview"><a href="<?= base_url('Barang-Masuk')?>"><i class="fa fa-circle-o"></i>Input Barang Masuk</a></li>
+        </ul>
       </li>
-      
+      <li class="treeview">
+        <a>
+          <i class="fa fa-list-alt"></i> <span>Barang Keluar</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li  class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
+        </ul>
+      </li>
+    </ul>
       
   </section>
 </aside>

@@ -10,7 +10,7 @@
 <!-- Main Content -->
 <section class="content">
 	<div class="row">
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-aqua">
 				<div class="inner">
 					<h1></h1>
@@ -37,7 +37,7 @@
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
-		</div>
+		</div> -->
 		<div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-yellow">
 				<div class="inner">

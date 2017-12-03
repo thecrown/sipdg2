@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	class Model_admin extends CI_Model {
-		##################################################################################################################
+##################################################################################################
 		public function GetAdmin_View(){
 			$where =array(
 				'role'=>"admin"
@@ -45,7 +45,7 @@
 			);
 			return $this->db->insert('admin',$data);
 		}
-		##################################################################################################################
+##################################################################################################
 		public function AddOperator()
 		{
 			$data = array(
@@ -82,7 +82,7 @@
 			);
 			return $this->db->update('admin',$data,$where);
 		} 
-#####################################################################Barang#####################################################	
+#####################################################################Barang#######################
 		public function GetKode_View(){
 			return $this->db->get('satuan')->result();
 		}
@@ -93,13 +93,16 @@
 		{
 			return $this->db->get('barang')->result();
 		}
+		public function GetBarang_ViewOP()
+		{
+			return $this->db->query('SELECT * FROM `barang` WHERE stock >0 ')->result();
+		}
 		public function GetDataBarangMasuk_view(){
-			 		$this->db->select('a.id_masuk,a.tanggal,c.kode,a.nama_barang,a.jumlah,b.jenis_barang,d.harga_barang,');
-			 		$this->db->from('barang_masuk a');
-			 		$this->db->join('jenis_barang b', 'b.id_jenis=a.jenis_barang', 'inner');
-    				$this->db->join('satuan c', 'c.id_satuan=a.kode_satuan', 'inner'); 
-    				$this->db->join('barang d', 'd.id_barang=a.kode_barang', 'inner'); 
-			return $this->db->get()->result();
+			 		
+			return $this->db->get('view_barang_masuk')->result();
+		}
+		public function GetBarang($id){
+			return $this->db->get_where('join_barang_jenis_satuan',$where = array('id_barang'=>$id))->result();
 		}
 		public function GetDataBarangKeluar_view(){
 					$this->db->select('*');
@@ -111,15 +114,9 @@
 		}
 		public function GetDataBarangKeluarOperator_view(){
 					$where =array(
-						'd.id_user'=>$this->session->userdata('user_id')
+						'id_user'=>$this->session->userdata('user_id')
 					);
-					$this->db->select('*');
-			 		$this->db->from('barang a');
-    				$this->db->join('satuan b', 'b.id_satuan=a.kode_satuan', 'inner'); 
-    				$this->db->join('jenis_barang c', 'c.id_jenis=a.jenis_barang', 'inner');
-    				$this->db->join('barang_keluar d', 'd.kode_barang=a.id_barang', 'inner');
-    				$this->db->where($where);
-			return $this->db->get()->result();
+			return $this->db->get_where('view_barang_keluar',$where)->result();
 		}
 		public function UpdatePassword($id)
 			{

@@ -31,6 +31,7 @@
                   <th>Harga</th>
                   <th>Total Harga</th>
                   <th>Penerima</th>
+                  <th>Lokasi</th>
                   <th>Pilihan</th>
                 </tr>
                 </thead>
@@ -49,6 +50,7 @@
                    <?php $total = $key->harga_barang * $key->jumlah; ?>
                   <td>Rp <?=number_format($total) ?></td>
                   <td><?=$key->penerima ?></td>
+                  <td><?=$key->lokasi ?></td>
                   <td>
                     <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_keluar;?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
@@ -107,7 +109,7 @@
                             <option value="">Pilih salah satu</option>
                             <?php if(isset($nama)){
                               foreach ($nama as $row) {?>
-                            <option value="<?=$row->id_barang ?>"><?=$row->nama_barang ?></option>
+                            <option value="<?=$row->id_barang ?>"><?=$row->nama_barang ?>&nbsp;&nbsp; Rp<?=number_format($row->harga_barang); ?></option>
                             <?php } } ?>
                           </select>
                           </div>
@@ -118,6 +120,10 @@
                           <div class="form-group">
                             <label for="inputPassword3" class="form-control-label">Penerima<span class="text-danger">*</span></label>
                             <input required type="text" name="penerima" class="form-control" value="<?=$key->penerima;?>" id="recipient-name">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputPassword3" class="form-control-label">Lokasi<span class="text-danger">*</span></label>
+                            <input required type="text" name="lokasi" class="form-control" value="<?=$key->lokasi;?>" id="recipient-name">
                           </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn btn-info">Update Barang</button>
@@ -145,6 +151,7 @@
                   <th>Harga</th>
                   <th>Total Harga</th>
                   <th>Penerima</th>
+                  <th>Lokasi</th>
                   <th>Pilihan</th>
                 </tr>
                 </tfoot>

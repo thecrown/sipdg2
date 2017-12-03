@@ -52,7 +52,7 @@
         </a>
       </li>
       
-      <li class="treeview">
+      <!-- <li class="treeview">
         <a href="<?php echo site_url('')?>">
           <i class="fa fa-list-alt"></i><span>Barang Masuk</span>
           <i class="fa fa-angle-left pull-right"></i>
@@ -69,7 +69,7 @@
         <ul class="treeview-menu">
           <li  class="treeview"><a href="<?= base_url('Barang-Keluar')?>"><i class="fa fa-circle-o"></i>Input Barang Keluar</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="treeview">
         <a>
           <i class="fa fa-list-alt"></i> <span>Daftar Barang</span>

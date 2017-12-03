@@ -115,6 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->form_validation->set_rules('stock', 'Jumlah', 'trim|required|xss_clean|numeric');
 			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean|numeric');
 			$this->form_validation->set_rules('total', 'Total Harga', 'trim|required|xss_clean|numeric');
+			$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required|xss_clean');
 
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
@@ -152,7 +153,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->form_validation->set_rules('jenis', 'Jenis Barang', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
 			$this->form_validation->set_rules('harga', 'Harga Satuan', 'trim|required|xss_clean|numeric');
-
+			$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required|xss_clean');
+			
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
 	            $this->session->set_flashdata($msg);
@@ -210,7 +212,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->form_validation->set_rules('nama', 'Nama Barang', 'trim|required|xss_clean|alpha_numeric_spaces');
 			$this->form_validation->set_rules('jumlah', 'Jumlah', 'trim|required|xss_clean|numeric');
 			$this->form_validation->set_rules('penerima', 'Penerima', 'trim|required|xss_clean|alpha_numeric_spaces');
-			
+			$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required|xss_clean');
 			if($this->form_validation->run()==false){
 				$msg['msg'] = validation_errors();
 	            $this->session->set_flashdata($msg);

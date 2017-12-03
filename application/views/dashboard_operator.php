@@ -10,6 +10,64 @@
 <!-- Main Content -->
 <section class="content">
 	<div class="row">
+		<div class="col-lg-3 col-xs-6">
+			<div class="small-box bg-aqua">
+				<div class="inner">
+					<h1></h1>
+					<p>DATA BARANG MASUK</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-files-o"></i>
+				</div>
+				<a href="<?php echo site_url('Catatan-Masuk')?>" class="small-box-footer">
+					Details <i class="fa fa-arrow-circle-right"></i>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-xs-6">
+			<div class="small-box bg-green">
+				<div class="inner">
+					<h1></h1>
+					<p>DATA BARANG KELUAR</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-files-o"></i>
+				</div>
+				<a href="<?php echo site_url('Catatan-Keluar')?>" class="small-box-footer">
+					Details <i class="fa fa-arrow-circle-right"></i>
+				</a>
+			</div>
+		</div>
+		<!-- <div class="col-lg-3 col-xs-6">
+			<div class="small-box bg-yellow">
+				<div class="inner">
+					<h1></h1>
+					<p>DATA SALDO BULANAN</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-files-o"></i>
+				</div>
+				<a href="<?php echo site_url('Data-Saldo-Bulanan')?>" class="small-box-footer">
+					Details <i class="fa fa-arrow-circle-right"></i>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-xs-6">
+			<div class="small-box bg-red">
+				<div class="inner">
+					<h1></h1>
+					<p>LAPORAN PERTANGGUNGJAWABAN</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-list-alt"></i>
+				</div>
+				<a href="<?php echo site_url('LaporanPertanggungJawaban')?>" class="small-box-footer">
+					Details <i class="fa fa-arrow-circle-right"></i>
+				</a>
+			</div>
+		</div> -->
+	</div>
+	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-default">
 				<div class="box-header with-border">

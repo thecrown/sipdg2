@@ -15,6 +15,41 @@
             </div>
             <form class="form-horizontal" action="<?=base_url('TambahBarangKeluarOperator') ?>" method="post">
               <div class="box-body">
+                <?php foreach ($barang as $key) {?>
+                <input type="hidden" name="nama_barang" value="<?= $key->id_barang ?>">
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Nama Barang</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control" name="jumlah" id="inputPassword3" placeholder="Jumlah" value="<?=$key->nama_barang?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3"  class="col-sm-2 control-label">Harga Barang</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control" value="Rp<?= number_format( $key->harga_barang);  ?>" name="jumlah" id="inputPassword3" placeholder="Jumlah">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Jenis Barang</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control" name="jumlah" id="inputPassword3" value="<?= $key->jenis_barang ?>" placeholder="Jumlah">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3"  class="col-sm-2 control-label">Satuan Barang</label>
+                  <div class="col-sm-10">
+                    <input type="text" value="<?= $key->kode ?>&nbsp;<?=$key->keterangan ?> " readonly class="form-control" name="jumlah" id="inputPassword3" placeholder="Jumlah">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Maksimal Pengambilan</label>
+                  <div class="col-sm-10">
+                    <input type="text" value="<?= $key->stock ?>" readonly value="" class="form-control" name="jumlah" id="inputPassword3" placeholder="Jumlah">
+                  </div>
+                </div>
+                <?php } ?>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tanggal</label>
 
@@ -22,18 +57,6 @@
                     <div class="input-group date"><div class="input-group-addon">
                     <i class="fa fa-calendar"></i></div><input type="date" name="tanggal" class="form-control" id="inputPassword3" placeholder="Tanggal"></div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Nama Barang</label>
-                  <div class="col-sm-10">
-                  <select class="form-control" name="nama_barang">
-                    <option>Pilih Salah Satu Barang</option>
-                    <?php if(isset($barang)){
-                      foreach ($barang as $row) {?>
-                    <option value="<?= $row->id_barang?>" ><?=$row->nama_barang ?></option>
-                    <?php } } ?>
-                  </select>
-                </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Jumlah</label>
@@ -47,6 +70,12 @@
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="penerima" id="inputPassword3" placeholder="Penerima">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Lokasi</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="lokasi" id="inputPassword3" placeholder="Lokasi">
                   </div>
                 </div>
               </div>

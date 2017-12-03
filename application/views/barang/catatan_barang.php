@@ -33,9 +33,7 @@
                 </thead>
                 <tbody>
                   <?php $no=1; ?>
-
-                  <?php foreach ($data as $key) {?>
-
+                  <?php foreach ($data as $key){ ?>
                 <tr>
                   <td><?=$no ?></td>
                   <td><?=$key->nama_barang ?></td>
@@ -44,46 +42,17 @@
                   <td><?=$key->stock ?></td>
                   
                   <?php if($key->stock!=0){ ?>
-                  <td>Rp <?php echo number_format($key->harga_barang) ?></td><?php }else{ echo "<td>Rp.0,00</td>"; }?>
+                  <td>Rp <?php echo number_format($key->harga_barang) ?></td><?php }else{ echo "<td>Rp.0,00</td>"; } ?>
                   <?php $total = $key->harga_barang * $key->stock; ?>
                   <td>Rp <?=number_format($total) ?></td>
                   <td>
-                    <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
+                    <span data-toggle="tooltip" title="Update Data"><a role="button" href="#editsk<?=$key->id_barang ?>" class="btn btn-success" data-toggle="modal"><i class="fa fa-upload bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
-                    <span data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
+                    <span data-toggle="tooltip" title="Delete Data"><a role="button" href="#delete<?=$key->id_barang?>" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash bigicon"></i></a></span>
                     &nbsp;&nbsp;&nbsp;
-                    
                   </td>
-                </tr>
-
-                <!-- Modal Delete -->
-                <div class="modal fade" id="delete" role="dialog">
-                  <div class="modal-dialog">
-                  
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Hapus Data Pencatatan Barang</h4>
-                      </div>
-                      <div class="modal-body col-xs-12">
-                        <p>Apa Anda Yakin Ingin Menghapus Catatan Data Barang ?
-                           
-                          <br>Nama Barang :&nbsp;<?=$key->nama_barang; ?> 
-                          <br>Jumlah :&nbsp;<?=$key->stock;?>
-                          <br>Harga Satuan :&nbsp;<?=$key->harga_barang;?>
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="<?php echo base_url('HapusBarang/'.$key->id_barang) ?>" class="btn btn-danger"><i class="fa fa-trash bigicon"></i>Hapus Data</a>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal Hapus</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="editsk" role="dialog">
+                  <!-- Modal -->
+                <div class="modal fade" id="editsk<?=$key->id_barang ?>" role="dialog">
                   <div class="modal-dialog">
                   
                     <div class="modal-content">
@@ -140,8 +109,33 @@
                     
                   </div>
                 </div>
-              </div>
-
+              </div> 
+               <!-- Modal Delete -->
+                <div class="modal fade" id="delete<?=$key->id_barang ?>" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Hapus Data Pencatatan Barang</h4>
+                      </div>
+                      <div class="modal-body col-xs-12">
+                        <p>Apa Anda Yakin Ingin Menghapus Catatan Data Barang ?
+                           
+                          <br>Nama Barang :&nbsp;<?=$key->nama_barang; ?> 
+                          <br>Jumlah :&nbsp;<?=$key->stock;?>
+                          <br>Harga Satuan :&nbsp;<?=$key->harga_barang;?>
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="<?php echo base_url('HapusBarang/'.$key->id_barang) ?>" class="btn btn-danger"><i class="fa fa-trash bigicon"></i>Hapus Data</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal Hapus</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </tr>
                   <?php $no++; ?>
                   <?php } ?>
                 </tbody>
