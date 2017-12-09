@@ -135,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		        	}else{
 		        		$msg['msg'] = "Data Barang berhasil di Tambahkan";
 		            	$this->session->set_flashdata($msg);
-		        		redirect('Catatan-Masuk');		        		
+		        		redirect('Dashboard-Operator');		        		
 		        	} 
 						
 				}else{
@@ -197,7 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}else{
 						$msg['msg'] = "Data Barang berhasil di Tambahkan";
 		            	$this->session->set_flashdata($msg);
-		        		redirect('Catatan-Keluar');
+		        		redirect('Dashboard-Operator');
 					}
 					 
 				}else{
