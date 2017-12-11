@@ -141,20 +141,6 @@
       });
     </script>
     <script>
-      $(function () {
-        //DataTable
-        $('#tabelku').DataTable();
-        $('#tabel').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-          });
-      });
-    </script>
-    <script>
     function confirmDialog()
     {
       tanya = confirm('Apakah Anda yakin menghapus data ini?');
@@ -168,7 +154,7 @@
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
       'info'        : true,
       'autoWidth'   : false
@@ -177,7 +163,6 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
-
 </script>
 <?php 
   if (!empty($this->session->flashdata('msg'))) {
@@ -241,8 +226,9 @@
     });
 
   </script>
+
   <script type="text/javascript">
-    
+  
   </script>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url('assets/bootstrap_3_3_6/js/bootstrap.min.js'); ?>"></script>

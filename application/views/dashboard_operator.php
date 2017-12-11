@@ -38,7 +38,7 @@
 				</a>
 			</div>
 		</div>
-		<!-- <div class="col-lg-3 col-xs-6">
+		<div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-yellow">
 				<div class="inner">
 					<h1></h1>
@@ -47,7 +47,7 @@
 				<div class="icon">
 					<i class="fa fa-files-o"></i>
 				</div>
-				<a href="<?php echo site_url('Data-Saldo-Bulanan')?>" class="small-box-footer">
+				<a href="<?php echo site_url('Data-Saldo-Bulanan-Operator')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -61,11 +61,11 @@
 				<div class="icon">
 					<i class="fa fa-list-alt"></i>
 				</div>
-				<a href="<?php echo site_url('LaporanPertanggungJawaban')?>" class="small-box-footer">
+				<a href="<?php echo site_url('LaporanPertanggungJawabanOperator')?>" class="small-box-footer">
 					Details <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
-		</div> -->
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">

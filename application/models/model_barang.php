@@ -187,8 +187,8 @@ class Model_barang extends CI_Model {
 				'stock'=>$datastock
 			);
 
-			$updatebarang = $this->db->update('barang', $databarang);
-			
+			$updatebarang = $this->db->update('barang', $databarang, $getBarangLama);
+			$deletebarangmasuk = $this->db->delete('barang',$getBarangLama);
 			$hapus = array(
 				'id_masuk'=>$id
 			);

@@ -1,12 +1,13 @@
     <section class="content-header">
       <h1>
-        Data Saldo 
+        Data Laporan Pertanggung Jawaban
+        
       </h1>
     </section>
 
     <section class="content">
-    <!-- <div class="row">
-    <form method="post" action="<?php echo base_url('CariDataBulan'); ?>">
+    <div class="row">
+    <form method="post" action="<?php echo base_url('CariDataBulanLPJOperator'); ?>">
       <div class="col-md-5">
       	<div class="form-group">
                	<select class="form-control select2" style="width: 100%;" name="tahun" required>
@@ -40,17 +41,20 @@
          	</div>
       </div>
       <div class="col-md-2">
-      	<button type="submit" class="btn btn-info">Cari</button>
+        <button type="submit" class="btn btn-info">Cari</button>
         <a role="button" href="#print" class="btn btn-success" data-toggle="modal"">Print</a>
       </div>
       </form>
-     </div> -->
+     </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
 
             <!-- /.box-header -->
             <div class="box-body">
+
+              
+
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -131,3 +135,6 @@
       </div>
       <!-- /.row -->
     </section>
+
+            <!-- Modal -->
+  

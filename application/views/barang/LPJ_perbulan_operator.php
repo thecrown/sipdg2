@@ -1,12 +1,12 @@
     <section class="content-header">
       <h1>
-        Data Saldo 
+        Data Laporan Pertanggung Jawaban
       </h1>
     </section>
 
     <section class="content">
-    <!-- <div class="row">
-    <form method="post" action="<?php echo base_url('CariDataBulan'); ?>">
+    <div class="row">
+    <form method="post" action="<?php echo base_url('CariDataBulanLPJOperator'); ?>">
       <div class="col-md-5">
       	<div class="form-group">
                	<select class="form-control select2" style="width: 100%;" name="tahun" required>
@@ -40,11 +40,11 @@
          	</div>
       </div>
       <div class="col-md-2">
-      	<button type="submit" class="btn btn-info">Cari</button>
+        <button type="submit" class="btn btn-info">Cari</button>
         <a role="button" href="#print" class="btn btn-success" data-toggle="modal"">Print</a>
       </div>
       </form>
-     </div> -->
+     </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -75,10 +75,10 @@
                    <td><?=$key->kode ?></td> 
                    <td><?=$key->stock ?></td> 
                    <td>Rp.<?= number_format($key->harga_barang )?></td>
-                    <?php $jumlah = $this->Model_barang->getpenambahan($key->id_barang); ?>
+                    <?php $jumlah = $this->Model_barang->getpenambahan2($key->id_barang); ?>
                    <td><?=$jumlah->jumlah?></td>
                    <td>Rp.<?= number_format($key->harga_barang)?></td>
-                   <?php $pengurangan = $this->Model_barang->getpengurangan($key->id_barang); ?>
+                   <?php $pengurangan = $this->Model_barang->getpengurangan2($key->id_barang); ?>
                    <td><?=$pengurangan->jumlah?></td>
                    <td>Rp.<?= number_format($key->harga_barang)?></td>
                    <td><?=$key->stock ?></td>
@@ -104,24 +104,23 @@
               </table>
               
               <table class="table table-responsive" border="2">
-              	<tr>
-              		<th>Jumlah Harga Persediaan Barang</th>
-              		<th>Jumlah Harga Penambahan Barang </th>
-              		<th>Jumlah Harga Pengurangan Barang </th>
-              		<th>Jumlah Harga Persediaan Akhir Barang </th>
-              	</tr>
-              	<tr>
+                <tr>
+                  <th>Jumlah Harga Persediaan Barang</th>
+                  <th>Jumlah Harga Penambahan Barang </th>
+                  <th>Jumlah Harga Pengurangan Barang </th>
+                  <th>Jumlah Harga Persediaan Akhir Barang </th>
+                </tr>
+                <tr>
                   <?php $hasil = $this->Model_barang->countPersediaanBarang(); ?>
                   <td>Rp.<?= number_format($hasil->Total)?></td>
-                  <?php $hasil2 = $this->Model_barang->countPenambahanBarang(); ?>
+                  <?php $hasil2 = $this->Model_barang->countPenambahanBarang2(); ?>
                   <td>Rp.<?= number_format($hasil2->Total)?></td>
-                  <?php $hasil3 = $this->Model_barang->countPenguranganBarang(); ?>
+                  <?php $hasil3 = $this->Model_barang->countPenguranganBarang2(); ?>
                   <td>Rp.<?= number_format($hasil3->Total)?></td>
                   <?php $hasil4 = $this->Model_barang->countPersediaanAkhirBarang(); ?>
                   <td>Rp.<?= number_format($hasil4->Total)?></td>
                 </tr>
               </table>
-         	</div>
             </div>
             <!-- /.box-body -->
           </div>

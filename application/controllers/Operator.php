@@ -150,6 +150,39 @@ class Operator extends CI_Controller {
             redirect($this->input->server('HTTP_REFERER'));
 		}
 	}
+	public function ViewSaldoBulanan()
+	{
+		$data['sidabar']='sidebar_operator';
+		$data['main_view']='/barang/catatan_bulanan';
+		// $data['kode']=$this->Model_admin->GetKode_View();
+		// $data['jenis']=$this->Model_admin->GetJenis_View();
+		$data['data']=$this->Model_barang->GetSaldoBarang_view();
+
+		$this->load->view('tampilan_home',$data);
+	}
+	public function LaporanPertanggungJawaban(){
+		$data['sidabar']='sidebar_operator';
+		$data['main_view']='/barang/Laporan_PJ_Operator';
+		$data['data']=$this->Model_barang->GetSaldoBarang_view();
+		$this->load->view('tampilan_home',$data);
+	}
+	public function CariDataBulanLPJ(){
+		$this->form_validation->set_rules('tahun', 'Kolom Tahun', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('bulan', 'Kolom bulan', 'trim|xss_clean|required');
+
+		if ($this->form_validation->run()==false) {
+				$msg['msg'] = "Pencarian Data Bulanan tidak Ditemukan";
+	            $this->session->set_flashdata($msg);
+				redirect($this->input->server('HTTP_REFERER'));
+		} else {
+				
+		        $data['sidabar']='sidebar_operator';
+				$data['main_view']='/barang/LPJ_perbulan_operator';
+				$data['data']=$this->Model_barang->GetSaldoBarang_view();
+				$this->load->view('tampilan_home',$data);
+		}
+	}
+
 
 }
 
